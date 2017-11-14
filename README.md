@@ -17,3 +17,6 @@ Technologies Used:
  * DB: sqlite3
 
 Service: Heroku
+
+## Deploying
+Link to deploy server: [https://room-alloc.herokuapp.com/](https://room-alloc.herokuapp.com/)
