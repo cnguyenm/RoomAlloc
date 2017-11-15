@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.shortcuts import redirect
 
 urlpatterns = [
     
-    # if app roomalloc
-    url(r'^roomalloc/', include('roomalloc.urls')),
+    # default
+    url(r'^', include('roomalloc.urls')),
     
     # if admin
-    url(r'^admin/', admin.site.urls),
+    url(r'^superadmin/', admin.site.urls),
 ]
+
+
