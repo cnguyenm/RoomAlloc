@@ -1,0 +1,28 @@
+
+{% extends "../base.html" %}
+
+{% block nav %}
+
+<ul class="nav navbar-nav">
+    <li class="{% if nbar == 'index' %}active{% endif %}">
+        <a href="{% url 'roomalloc:index' %}">Home</a>
+    </li>
+    <li class="{% if nbar == 'about' %}active{% endif %}">
+        <a href="{% url 'roomalloc:about' %}">About</a>
+    </li>
+    <li class="{% if nbar == 'contact' %}active{% endif %}">
+        <a href="{% url 'roomalloc:contact' %}">Contact</a>
+    </li>
+</ul>
+    
+<ul class="nav navbar-nav navbar-right">
+    <li class="{% if nbar == 'signup' %}active{% endif %}">
+        <a href="{% url 'roomalloc:signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+    </li>
+    
+    <li class="{% if nbar == 'login' %}active{% endif %}">
+        <a href="{% url 'roomalloc:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+    </li>
+</ul>
+
+{% endblock %}
