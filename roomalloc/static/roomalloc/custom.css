@@ -1,0 +1,11 @@
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.8); /*black*/
+}
+
+/* Bootstrap navbar block content */
+body {
+    padding-top:65px;
+}
