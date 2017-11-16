@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <title>
         {% block title %}RoomAlloc{% endblock %}
     </title>
@@ -20,8 +21,9 @@
    
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'roomalloc/custom.css' %}" />
-    
-     <!-- Block to put in custom link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+     
+    <!-- Block to put in custom link -->
     {% block head_ref %}{% endblock %}
     
 </head>
