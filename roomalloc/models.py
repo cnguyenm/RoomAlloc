@@ -27,9 +27,15 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     
     # other information
-    email = models.CharField(max_length=100)
+    #email = models.EmailField(unique=True, null=True)
     major = models.CharField(max_length = 50)
     grad_date = models.DateField(null=True, blank=True)
+    
+    year  = models.CharField(
+        max_length = 10,
+        choices = YEAR_CHOICE,
+        default = UNDERGRAD
+    )
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
