@@ -16,8 +16,8 @@ urlpatterns = [
     
     # account
     url(r'^account/signup/$', account.signup, name='signup'),
-    url(r'^account/login/$' , account.login , name='login'),
-    url(r'^account/logout/$', account.logout, name='logout'),
+    url(r'^account/login/$' , account.log_in , name='login'),
+    url(r'^account/logout/$', account.log_out, name='logout'),
     
 ]
 
