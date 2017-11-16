@@ -23,14 +23,19 @@ Link to deploy server: [https://room-alloc.herokuapp.com/](https://room-alloc.he
 Some useful commands
 
 * Activate venv, every time run project
+
 `pip3 install virtualenv`
+
 `virtualenv venv`
+
 `source ./venv/bin/activate`
 
 * Declare app dependencies
+
 `pip3 freeze > requirements.txt`
 
 * Install dependencies
+
 `pip3 install -r requirements.txt`
 
 
