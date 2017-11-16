@@ -27,8 +27,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     
     # other information
-    #email = models.EmailField(unique=True, null=True)
-    major = models.CharField(max_length = 50)
+    major = models.CharField(max_length = 200)
     grad_date = models.DateField(null=True, blank=True)
     
     year  = models.CharField(

@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 from roomalloc.models import Profile
 
 class SignUpForm(UserCreationForm):
+    
+    # models.User already has field email
+    # doing this will put email into model directly
     email = forms.EmailField(max_length=254, help_text="Purdue email")
     
     class Meta:

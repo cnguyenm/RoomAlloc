@@ -25,3 +25,7 @@ class TplConst():
     
     NBAR = "nbar"
     
+class GroupName():
+    NORMAL = 'normal'
+    STAFF = 'staff'
+    
