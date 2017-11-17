@@ -32,7 +32,7 @@ def signup(request):
             user.profile.email = form.cleaned_data.get('email')
             
             # add to group
-            normal_group = Group.objects.get(name='normal')
+            normal_group, created = Group.objects.get_or_create(name='normal')
             user.groups.add(normal_group)
             
             # save
