@@ -4,24 +4,21 @@
 {% block nav %}
 
 <ul class="nav navbar-nav">
-    <li class="{% if nbar == 'index' %}active{% endif %}">
+    <li class="{% if nbar == 'user_home' %}active{% endif %}">
         <a href="{% url 'roomalloc:index' %}">Home</a>
     </li>
-    <li class="{% if nbar == 'about' %}active{% endif %}">
-        <a href="{% url 'roomalloc:about' %}">About</a>
+    <li class="{% if nbar == 'user_reserve' %}active{% endif %}">
+        <a href="{% url 'roomalloc:user_reserve' %}">Reserve</a>
     </li>
-    <li class="{% if nbar == 'contact' %}active{% endif %}">
-        <a href="{% url 'roomalloc:contact' %}">Contact</a>
+    <li class="{% if nbar == 'user_explore' %}active{% endif %}">
+        <a href="{% url 'roomalloc:user_explore' %}">Explore room</a>
     </li>
 </ul>
     
 <ul class="nav navbar-nav navbar-right">
-    <li class="{% if nbar == 'signup' %}active{% endif %}">
-        <a href="{% url 'roomalloc:signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
-    </li>
     
     <li class="{% if nbar == 'login' %}active{% endif %}">
-        <a href="{% url 'roomalloc:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+        <a href="{% url 'roomalloc:logout' %}"><span class="glyphicon glyphicon-log-out"></span>Log out</a>
     </li>
 </ul>
 
