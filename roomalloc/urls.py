@@ -1,7 +1,7 @@
 
 from django.conf.urls import url 
 
-from roomalloc.view import public, account, user
+from roomalloc.view import public, account, user, room
 
 # register app_name for template url
 app_name = 'roomalloc'
@@ -22,6 +22,10 @@ urlpatterns = [
     # user
     url(r'^user/$'          , user.home     , name='user_home'),
     url(r'^user/reserve/$'  , user.reserve  , name='user_reserve'),
-    url(r'^user/explore/$'  , user.explore  , name='user_explore'),
+   
+    # room
+    url(r'^room/$'                      , room.explore, name='room_explore'),
+    url(r'^room/(?P<room_id>[0-9]+)/$'  , room.detail , name='room_detail'),
+    
 ]
 

@@ -1,4 +1,4 @@
-{% extends "./user_base.html" %}
+{% extends "../user/user_base.html" %}
 {% load static %}
 
 {% block container %}
@@ -23,7 +23,9 @@
         {% for room in rooms %}
         <tr>
             <td>{{ room.location }}</td>
-            <td>{{ room.name }}</td>
+            <td>
+                <a href="{% url 'roomalloc:room_detail' room.id %}">{{ room.name }}</a>
+            </td>
             <td>{{ room.capacity }}</td>
             <td>
                 {% if room.is_reservable %}

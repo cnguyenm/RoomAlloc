@@ -18,9 +18,11 @@ class Template():
     ACC_SIGNUP      = "roomalloc/public/signup.html"
     
     USER_HOME       = "roomalloc/user/user_home.html"
-    USER_EXPLORE    = "roomalloc/user/user_explore.html"
     USER_RESERVE    = "roomalloc/user/user_reserve.html"
+    USER_ROOM       = "roomalloc/user/user_room.html"
     
+    ROOM_EXPLORE    = "roomalloc/room/room_explore.html"
+    ROOM_DETAIL     = "roomalloc/room/room_detail.html"
 
 class TplConst():
     """
