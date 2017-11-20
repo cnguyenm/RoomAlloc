@@ -1,0 +1,36 @@
+{% extends "./user_base.html" %}
+
+{% block container %}
+
+<h2>Explore room options</h2>
+
+<!-- Table -->
+<table class="table table-striped">
+    <!-- Table Head-->
+    <thead>
+        <th>Location</th>
+        <th>Name</th>
+        <th>Capacity</th>
+        <th>Reserable</th>
+    </thead>
+    <!-- /Table Head-->
+    
+    <!-- Table Body -->
+    <tbody>
+        <!-- Table Row -->
+        {% for room in rooms %}
+        <tr>
+            <td>{{ room.location }}</td>
+            <td>{{ room.name }}</td>
+            <td>{{ room.capacity }}</td>
+            <td>{{ room.is_reservable|yesno:"Yes,No,TBD" }}</td>
+        </tr>
+        {% endfor %}        
+        <!-- /Table Row-->
+    </tbody>
+    <!-- /Table Body -->
+</table>
+
+<!-- /Table -->
+
+{% endblock %}

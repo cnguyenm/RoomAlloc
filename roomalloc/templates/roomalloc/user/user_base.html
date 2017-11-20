@@ -17,6 +17,9 @@
     
 <ul class="nav navbar-nav navbar-right">
     
+    <li>
+        <a href="#">{{ request.user.username }}</a>
+    </li>
     <li class="{% if nbar == 'login' %}active{% endif %}">
         <a href="{% url 'roomalloc:logout' %}"><span class="glyphicon glyphicon-log-out"></span>Log out</a>
     </li>
