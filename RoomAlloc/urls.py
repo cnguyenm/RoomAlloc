@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^', include('roomalloc.urls')),
     
     # if admin
-    url(r'^superadmin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
 ]
 
 
