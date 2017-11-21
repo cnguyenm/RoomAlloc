@@ -72,3 +72,12 @@ def detail(request, room_id):
     }
     
     return render(request, T.ROOM_DETAIL, context)
+    
+@login_required
+def reserve(request, room_id):
+    """
+    Reserve room for user
+    
+    """
+    
+    return HttpResponse("hello")

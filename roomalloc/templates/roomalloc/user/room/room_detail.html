@@ -1,11 +1,11 @@
-{% extends "../user/user_base.html" %}
+{% extends "../user_base.html" %}
 {% load static %}
 
 {% block head_ref %}
-<link href="{% static 'calendar/fullcalendar.min.css' %}" rel="stylesheet" />
-<link href="{% static 'calendar/fullcalendar.print.min.css' %}" rel="stylesheet" media="print" />
-<script src="{% static 'calendar/lib/moment.min.js' %}"></script>
-<script src="{% static 'calendar/fullcalendar.min.js' %}"></script>
+<link href="{% static 'vendor/calendar/fullcalendar.min.css' %}" rel="stylesheet" />
+<link href="{% static 'vendor/calendar/fullcalendar.print.min.css' %}" rel="stylesheet" media="print" />
+<script src="{% static 'vendor/calendar/lib/moment.min.js' %}"></script>
+<script src="{% static 'vendor/calendar/fullcalendar.min.js' %}"></script>
 <script>
 $(document).ready(function() {
 		
@@ -15,7 +15,7 @@ $(document).ready(function() {
 			center: 'title',
 			right: 'month,agendaWeek,agendaDay'
 		},
-		defaultDate: "{{ today }}",
+		defaultDate: "{{ today }}", /* python */
 		navLinks: true, // can click day/week names to navigate views
 		selectable: false,
 		selectHelper: true,
@@ -35,6 +35,7 @@ $(document).ready(function() {
 		editable: false,
 		eventLimit: true, // allow "more" link when too many events
 		events: [
+			/* python */
 			{% for event in events %}
 				{
 					title : "{{ event.title }}",
@@ -42,6 +43,7 @@ $(document).ready(function() {
 					end	  : "{{ event.end }}"
 				},
 			{% endfor %}
+			/* /python */
 		]
 	});
 	
@@ -55,6 +57,7 @@ $(document).ready(function() {
 
 <div class="container">
     
+    <!-- Room detail -->
     <h2>Room detail </h2>
     
     <h3>{{ room.location }}, {{ room.name }}</h3>
@@ -69,10 +72,20 @@ $(document).ready(function() {
     </p>
     
     {{ room.tech|safe }}
+    <!-- /Room detail -->
     
+    
+    <!-- Reserve button -->
+    <a class="button btn btn-info" href="{% url 'roomalloc:room_reserve' room.id %}">
+    	<i class="fa fa-paper-plane" aria-hidden="true"></i> Reserve room
+	</a>
+    
+    <!-- /Reserve button -->
+    
+    
+    <!-- Calendar -->
     <p>Schedule Lists...</p>
-    
     <div id="calendar"></div>
-    
+    <!-- /Calendar -->
 </div>
 {% endblock %}
