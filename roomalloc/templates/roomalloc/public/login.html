@@ -1,7 +1,35 @@
 {% extends "./public_base.html" %}
 
+{% block head_ref %}
+<style type="text/css">
+    #loginContainer {
+        position: absolute;
+        top: 350px;
+        left: 850px;
+    }
+    #btnSubmit {
+        position: absolute;
+        top: 550px;
+        left: 900px;
+    }
+    #logoSmall {
+        width: 5%;
+        position: absolute;
+        top: 275px;
+        left: 900px;
+    }
+</style>
+{% endblock %}
 
 {% block container %}
+
+<div id=logoSmall> 
+      <img src="https://pluralsight.imgix.net/paths/python-7be70baaac.png" class="img-responsive" style="width:100%" alt="Image">
+     
+    </div>
+
+<div class="container">
+<div id=loginContainer>
 
 <h2>Log in </h2>
 
@@ -25,8 +53,21 @@
         </p>
       
     {% endfor %}
+</div>
+</div>  
+    
     
     <button id=btnSubmit type="submit">Login</button>
+
+ 
+
 </form>
+
+<!--<h1>Username</h1>-->
+<!--<input type="text" name="user"/>-->
+
+<!--<h1>Password</h1>-->
+<!--<input type="text" name="pass"/>-->
+
 
 {% endblock %}
