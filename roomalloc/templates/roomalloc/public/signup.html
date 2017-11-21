@@ -1,12 +1,27 @@
 {% extends "./public_base.html" %}
 
+{% block head_ref %}
+<style type="text/css">
+#wrapper {
+    margin-top: 200px;
+    margin-left: 300px;
+}    
+#btnSignup {
+    width: 10%;
+    margin-left: 850px;
+}
+    </style>
+{% endblock %}
 
 {% block container %}
 
-<h2>Sign up</h2>
+<div class="container">
+    <div id=wrapper>
+<h2>Create an Account</h2>
 
 <form method="POST">
     {% csrf_token %}
+    
     
     {% for field in form %}
         <p>
@@ -21,10 +36,13 @@
             <p style="color: red">{{ error }}</p>
             {% endfor %}
         </p>
-      
+     
     {% endfor %}
+</div>
+</div>    
     
-    <button type="submit">Sign up</button>
+        <button id=btnSignup type="submit">Sign up</button>
+      
 </form>
 
 {% endblock %}
