@@ -1,6 +1,56 @@
 {% extends "../user/user_base.html" %}
 {% load static %}
 
+{% block head_ref %}
+<link href="{% static 'calendar/fullcalendar.min.css' %}" rel="stylesheet" />
+<link href="{% static 'calendar/fullcalendar.print.min.css' %}" rel="stylesheet" media="print" />
+<script src="{% static 'calendar/lib/moment.min.js' %}"></script>
+<script src="{% static 'calendar/fullcalendar.min.js' %}"></script>
+<script>
+$(document).ready(function() {
+		
+	$('#calendar').fullCalendar({
+		header: {
+			left: 'prev,next today',
+			center: 'title',
+			right: 'month,agendaWeek,agendaDay'
+		},
+		defaultDate: "{{ today }}",
+		navLinks: true, // can click day/week names to navigate views
+		selectable: false,
+		selectHelper: true,
+		select: function(start, end) {
+			var title = prompt('Event Title:');
+			var eventData;
+			if (title) {
+				eventData = {
+					title: title,
+					start: start,
+					end: end
+				};
+				$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+			}
+			$('#calendar').fullCalendar('unselect');
+		},
+		editable: false,
+		eventLimit: true, // allow "more" link when too many events
+		events: [
+			{% for event in events %}
+				{
+					title : "{{ event.title }}",
+					start : "{{ event.start }}",
+					end	  : "{{ event.end }}"
+				},
+			{% endfor %}
+		]
+	});
+	
+});
+</script>
+{% endblock %}
+
+
+
 {% block container %}
 
 <div class="container">
@@ -17,9 +67,12 @@
             <img src="{% static 'roomalloc/icon/icon-no.svg' %}" alt="No"/>
         {% endif %}
     </p>
-    <p>{{ room.tech|safe }}</p>
+    
+    {{ room.tech|safe }}
     
     <p>Schedule Lists...</p>
+    
+    <div id="calendar"></div>
     
 </div>
 {% endblock %}
