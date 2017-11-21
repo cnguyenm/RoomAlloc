@@ -16,6 +16,7 @@ from django.contrib.auth.decorators import login_required
 from roomalloc.const import Template as T
 from roomalloc.models import Room, Location
 from roomalloc.helper import CalendarEvent
+from roomalloc.forms import ReserveForm
 
 @login_required
 def explore(request):
@@ -77,7 +78,26 @@ def detail(request, room_id):
 def reserve(request, room_id):
     """
     Reserve room for user
-    
+    Display a form
     """
     
-    return HttpResponse("hello")
+    # var
+    form = None
+    room = get_object_or_404(Room, pk=room_id)
+    
+    # handle post
+    if request.method == "POST":
+        form = ReserveForm(request.POST)
+        if form.is_valid():
+            return HttpResponse("ok")
+    else:
+        form = ReserveForm()
+    
+    # context
+    context = {
+        "nbar" : "room_explore",
+        "room" : room,
+        "form" : form
+    }
+    
+    return render(request, T.ROOM_RESERVE, context)

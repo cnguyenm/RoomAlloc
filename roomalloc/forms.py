@@ -1,9 +1,15 @@
+"""
+Forms
 
+Documentation:
+Form Field, widget: https://docs.djangoproject.com/en/1.11/ref/forms/fields/#built-in-fields
+
+"""
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from roomalloc.models import Profile
+from roomalloc.models import Profile, Reservation
 
 class SignUpForm(UserCreationForm):
     
@@ -34,3 +40,26 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('grad_date', 'year', 'major')
+        
+
+class ReserveForm(forms.ModelForm):
+    """
+    Reserve Creation Form 
+    
+    """
+    class Meta:
+        model = Reservation
+        fields = ('time_start', 'time_end', 'amount')
+        widgets = {
+            'time_start' : forms.DateTimeInput(
+                attrs = {'class' : 'form-control datetime-input'}
+            ),
+            
+            'time_end' : forms.DateTimeInput(
+                attrs = {'class' : 'form-control datetime-input'}
+            ),
+            
+            'amount' : forms.NumberInput(
+                attrs = {'class' : 'form-control'}
+            )
+        }
