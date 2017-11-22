@@ -1,10 +1,27 @@
 
 {% extends "./public_base.html" %}
-
+{% load static %}
 
 {% block container %}
-
-<h1>This is public index.html</h1>
-
-
+<div class="container">
+    <div id="logoDiv">
+        <img src="{% static 'roomalloc/img/logo2.png' %}" alt="Room Alloc">
+    </div>
+    
+    <h1>Check availablitiy and book rooms on campus with just a few clicks.</h1>
+    
+    
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+            <i class="fa fa-bus " aria-hidden="true"></i>
+            Check if a room can is First Come First Server, or can be booked
+        </div>
+        <div class="col-lg-4 col-md-6">
+            Check if a room can is First Come First Server, or can be booked
+        </div>
+        <div class="col-lg-4 col-md-6">
+            Check if a room can is First Come First Server, or can be booked
+        </div>
+    </div>
+</div>
 {% endblock %}
