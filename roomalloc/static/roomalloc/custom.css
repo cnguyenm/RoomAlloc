@@ -20,29 +20,10 @@ h1{
     text-align: center;
 }
 
-#HomeInfo{
+#table{
     text-align: center;
     font-size: 20px;
     font-family: "Aclonica";
     display: table;
-    border-collapse: separate;
-    border-spacing: 2px;
-    border-color: gray;
-    width: 75%;
 }
 
-td{
-    text-align: center;
-}
-
-#col1{
-    background-color: #6c99ff;
-}
-
-#col2{
-    background-color: #ff6c6c;
-}
-
-#col3{
-    background-color: #f7ff6c;
-}
