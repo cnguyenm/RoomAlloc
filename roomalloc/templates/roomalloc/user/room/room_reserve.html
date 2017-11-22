@@ -33,12 +33,26 @@
             <p style="color: red">{{ error }}</p>
             {% endfor %}
         
-      
+            {% if error_msg %}
+            <p style="color: red">{{ error_msg }}</p>
+            {% endif %} 
+             
     {% endfor %}
     
     <br>
     <button class="btn btn-info" type="submit">Reserve room</button>
 </form>
+
+<div>
+    Rules of reserving:
+    <ul>
+        <li>Cannot reserve 2 times/day</li>
+        <li>No more than 3 hours</li>
+        <li>Time should not collide with previous reservation</li>
+        <li>If no one come after 15", user will receive penalty</li>
+        
+    </ul>
+</div>
 
 <script>
 $(function() {

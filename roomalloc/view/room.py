@@ -84,14 +84,18 @@ def reserve(request, room_id):
     # var
     form = None
     room = get_object_or_404(Room, pk=room_id)
+    error_msg = None
     
     # handle post
     if request.method == "POST":
-        form = ReserveCreationForm(request.POST)
+        form = ReserveCreationForm(request.POST, room=room, user=request.user)
         if form.is_valid():
+            
+            # check amount with room
+            
             return HttpResponse("ok")
     else:
-        form = ReserveCreationForm()
+        form = ReserveCreationForm(room=room, user=request.user)
     
     # context
     context = {
