@@ -16,6 +16,7 @@ class Template():
     
     ACC_LOGIN       = "roomalloc/public/login.html"
     ACC_SIGNUP      = "roomalloc/public/signup.html"
+    ACC_PROFILE     = "roomalloc/user/user_profile.html"
     
     USER_HOME       = "roomalloc/user/user_home.html"
     USER_RESERVE    = "roomalloc/user/user_reserve.html"

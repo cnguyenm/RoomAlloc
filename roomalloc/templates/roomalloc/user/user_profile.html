@@ -1,0 +1,60 @@
+{% extends "./user_base.html" %}
+{% load static %}
+
+{% block head_ref %}
+
+<!-- Custom User CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'roomalloc/css/user.css' %}" />
+
+{% endblock %}
+
+{% block container %}
+
+<h2>Update profile</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    
+    {% for field in form1 %}
+        <p>
+            {{ field.label_tag }}<br>
+            {{ field }}
+            
+            {% if field.help_text %}
+            <small style="color: grey">{{ field.help_text|safe }}</small>
+            {% endif %}
+            
+            {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+            {% endfor %}
+        </p>
+      
+    {% endfor %}
+    
+    {% for field in form2 %}
+        <p>
+            {{ field.label_tag }}<br>
+            {{ field }}
+            
+            {% if field.help_text %}
+            <small style="color: grey">{{ field.help_text|safe }}</small>
+            {% endif %}
+            
+            {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+            {% endfor %}
+        </p>
+      
+    {% endfor %}
+    
+    <button type="submit">Update profile</button>
+</form>
+
+
+{% endblock %}
+
+
+New Name: </br>
+    New Email: </br>
+    New Password: </br>
+    

@@ -8,6 +8,8 @@
 /* Bootstrap navbar block content */
 body {
     padding-top:65px;
+    font-family: "Aclonica";
+    line-height: 30px;
 }
 
 h1{
@@ -27,3 +29,6 @@ h1{
     display: table;
 }
 
+#img1{
+    color: #ff2d00;
+}
