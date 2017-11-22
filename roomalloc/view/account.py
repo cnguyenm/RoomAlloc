@@ -34,7 +34,7 @@ def signup(request):
             user.profile.email = form.cleaned_data.get('email')
             
             # add to group
-            normal_group = Group.objects.get(name='normal')
+            normal_group = Group.objects.get_or_create(name='normal')
             user.groups.add(normal_group)
             
             # save
@@ -79,7 +79,49 @@ def log_in(request):
         {T.NBAR:"login", 'form':form, 'error_msg':error_msg}
     )
     
+
+def update_profile(request):
     
+    # user form
+    form1 = None
+    user_model = None
+    
+    # profile form
+    form2 = None
+    profile_model = None
+    
+    
+    if (request.method == "POST"):
+        form1 = UserForm(request.POST)
+        form2 = ProfileForm(request.POST)
+        
+        if form1.is_valid() and form2.is_valid():
+            
+            # get model
+            user_model = form1.save()
+            user_model.refresh_from_db() # load the profile
+            
+            profile_model = form2.save()
+            profile_model.user = user_model
+            
+            # save model
+            user_model.save()
+            profile_model.save()
+            
+            
+            
+    else:
+        form1 = UserForm(instance=request.user)
+        form2 = ProfileForm(instance=request.user)
+    
+    context = {
+        "nbar" : "update_profile",
+        "form1" : form1,
+        "form2" : form2
+    }
+    
+    return render(request, Template.ACC_PROFILE, context)
+
 def log_out(request):
     logout(request)
     return redirect(reverse("roomalloc:index"))
