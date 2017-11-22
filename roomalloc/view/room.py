@@ -15,8 +15,8 @@ from django.contrib.auth.decorators import login_required
 
 from roomalloc.const import Template as T
 from roomalloc.models import Room, Location
-from roomalloc.helper import CalendarEvent
-from roomalloc.forms import ReserveForm
+from roomalloc.util.calendar import CalendarEvent
+from roomalloc.form.reservation import ReserveCreationForm
 
 @login_required
 def explore(request):
@@ -87,11 +87,11 @@ def reserve(request, room_id):
     
     # handle post
     if request.method == "POST":
-        form = ReserveForm(request.POST)
+        form = ReserveCreationForm(request.POST)
         if form.is_valid():
             return HttpResponse("ok")
     else:
-        form = ReserveForm()
+        form = ReserveCreationForm()
     
     # context
     context = {

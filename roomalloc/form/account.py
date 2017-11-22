@@ -1,10 +1,14 @@
 """
-Forms
+Form deal with account
+* SignUp 
+* Login
+* Update
 
 Documentation:
 Form Field, widget: https://docs.djangoproject.com/en/1.11/ref/forms/fields/#built-in-fields
 
 """
+
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -16,18 +20,16 @@ class SignUpForm(UserCreationForm):
     
     # models.User already has field email
     # doing this will put email into model directly
-    email = forms.EmailField(max_length=254, help_text="Purdue email")
+    email = forms.EmailField(
+        max_length=254, 
+        help_text="Purdue email",
+        validators = [validation.validate_purdue_email]
+    )
     
     class Meta:
         model = User 
         fields = ('username', 'email', 'password1', 'password2')
     
-    def clean_email(self):
-        email = self.cleaned_data.get("email")
-        if "@purdue.edu" not in email:
-            raise forms.ValidationError(
-                'Not Purdue email', code='invalid'
-            )
     
         
 
