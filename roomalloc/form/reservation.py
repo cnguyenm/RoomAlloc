@@ -5,6 +5,8 @@ Forms for reservation:
 * Delete
 """
 
+import datetime
+
 from django import forms
 
 from roomalloc.models import Profile, Reservation
@@ -103,10 +105,7 @@ class ReserveCreationForm(forms.ModelForm):
         # get time submit
         time_start  = self.cleaned_data.get("time_start")
         time_end    = self.cleaned_data.get("time_end")
-        
-        day_start   = time_start.strftime("%Y/%m/%d")
-        day_end     = time_end.strftime("%Y/%m/%d")
-        
+    
         # error_lit
         errors = []
         
@@ -117,12 +116,19 @@ class ReserveCreationForm(forms.ModelForm):
                 code="error_time_start_greater"
             ))
         
-        if (day_start != day_end):
+        # check time_start, time_end on same day
+        if (time_start.date() != time_end.date()):
             errors.append(forms.ValidationError(
                 "time_start, time_end on different day",
                 code="error_diff_day"
             ))
         
+        # check time_end <= time_start + 3h
+        if (time_end > time_start + datetime.timedelta(hours=3)):
+            errors.append(forms.ValidationError(
+                "Event should less than 3 hours",
+                code="error_too_long"
+            ))
         
         if (len(errors) > 0):
             raise forms.ValidationError(errors)

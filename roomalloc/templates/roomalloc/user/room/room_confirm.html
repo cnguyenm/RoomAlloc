@@ -1,0 +1,14 @@
+{% extends "../user_base.html" %}
+{% load static %}
+
+{% block container %}
+
+Reserve successfully
+
+<br>
+<a class="btn btn-info" href="{% url 'roomalloc:room_explore' %}">
+    <i class="fa fa-backward" aria-hidden="true"></i> 
+    Go back to room explore?
+</a>
+
+{% endblock %}

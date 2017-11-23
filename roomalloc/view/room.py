@@ -9,14 +9,18 @@ Deal with view for room
 """
 import datetime
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
 from roomalloc.const import Template as T
 from roomalloc.models import Room, Location
-from roomalloc.util.calendar import CalendarEvent
+from roomalloc.util import calendar
 from roomalloc.form.reservation import ReserveCreationForm
+
+# convert to local timezone
+
 
 @login_required
 def explore(request):
@@ -46,19 +50,7 @@ def detail(request, room_id):
     room = get_object_or_404(Room, pk=room_id)
     
     # get room schedule
-    reservations = room.reservation_set.all()
-    
-    # convert reservations into calendar_events
-    # ex: '2017-11-09T16:00:00'
-    events = []
-    event  = None
-    for r in reservations:
-        event = CalendarEvent()
-        event.event_id = r.id
-        event.title = "Booked"
-        event.start = r.time_start.strftime("%Y-%m-%dT%H:%M:%S")
-        event.end   = r.time_end.strftime("%Y-%m-%dT%H:%M:%S")
-        events.append(event)
+    events = calendar.get_room_events(room)
     
     # get datetime today
     now = datetime.datetime.now()
@@ -80,28 +72,42 @@ def reserve(request, room_id):
     Reserve room for user
     Display a form
     """
-    
     # var
     form = None
     room = get_object_or_404(Room, pk=room_id)
     error_msg = None
+    
+    # calendar context
+    events = calendar.get_room_events(room)
+    now = datetime.datetime.now()
+    today = now.strftime("%Y-%m-%d")
     
     # handle post
     if request.method == "POST":
         form = ReserveCreationForm(request.POST, room=room, user=request.user)
         if form.is_valid():
             
-            # check amount with room
+            # save reservation
+            reservation = form.save(commit=False)
+            reservation.user = request.user
+            reservation.room = room
+            reservation.save()
             
-            return HttpResponse("ok")
+            return redirect( reverse("roomalloc:room_confirm") )
     else:
         form = ReserveCreationForm(room=room, user=request.user)
     
     # context
     context = {
-        "nbar" : "room_explore",
-        "room" : room,
-        "form" : form
+        "nbar"   : "room_explore",
+        "events" : events,
+        "today"  : today,
+        "room"   : room,
+        "form"   : form
     }
     
     return render(request, T.ROOM_RESERVE, context)
+    
+@login_required
+def confirm(request):
+    return render(request, T.ROOM_CONFIRM, {})

@@ -9,49 +9,9 @@
 <link href="{% static 'vendor/calendar/fullcalendar.print.min.css' %}" rel="stylesheet" media="print" />
 <script src="{% static 'vendor/calendar/lib/moment.min.js' %}"></script>
 <script src="{% static 'vendor/calendar/fullcalendar.min.js' %}"></script>
-<script>
-$(document).ready(function() {
-		
-	$('#calendar').fullCalendar({
-		header: {
-			left: 'prev,next today',
-			center: 'title',
-			right: 'month,agendaWeek,agendaDay'
-		},
-		defaultDate: "{{ today }}", /* python */
-		navLinks: true, // can click day/week names to navigate views
-		selectable: false,
-		selectHelper: true,
-		select: function(start, end) {
-			var title = prompt('Event Title:');
-			var eventData;
-			if (title) {
-				eventData = {
-					title: title,
-					start: start,
-					end: end
-				};
-				$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-			}
-			$('#calendar').fullCalendar('unselect');
-		},
-		editable: false,
-		eventLimit: true, // allow "more" link when too many events
-		events: [
-			/* python */
-			{% for event in events %}
-				{
-					title : "{{ event.title }}",
-					start : "{{ event.start }}",
-					end	  : "{{ event.end }}"
-				},
-			{% endfor %}
-			/* /python */
-		]
-	});
-	
-});
-</script>
+
+{% include "./room_calendar.html" %}
+
 {% endblock %}
 
 

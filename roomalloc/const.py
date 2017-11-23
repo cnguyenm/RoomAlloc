@@ -25,6 +25,7 @@ class Template():
     ROOM_EXPLORE    = "roomalloc/user/room/room_explore.html"
     ROOM_DETAIL     = "roomalloc/user/room/room_detail.html"
     ROOM_RESERVE    = "roomalloc/user/room/room_reserve.html"
+    ROOM_CONFIRM    = "roomalloc/user/room/room_confirm.html"
 
 class TplConst():
     """

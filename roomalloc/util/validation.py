@@ -6,6 +6,8 @@ Contains form validators
 import datetime
 from django.core.exceptions import ValidationError
 
+from roomalloc.models import Reservation
+
 
 def validate_time_round_up(user, room):
     """
@@ -22,14 +24,22 @@ def validate_time_round_up(user, room):
     def inner_function(time):
         # get datetime today
         now = datetime.datetime.now()
-        today = now.strftime("%Y/%m/%d")
-        
-        # get 
         
         # get datetime submit
         minute = time.minute
         second = time.second
-        submit_day = time.strftime("%Y/%m/%d")
+        
+        # get user reservations in date submit
+        user_res = Reservation.objects.filter(
+            # time.date is 0 am
+            # so time_start is after 0 am
+            time_start__gte=time.date(), 
+            user=user
+        )
+        
+        # get all reservations in date submit
+        
+        
         
         errors  = []
         
@@ -44,10 +54,16 @@ def validate_time_round_up(user, room):
                 ValidationError('Second should be 0', code='error2')
             )
         
-        if (submit_day <= today):
+        if (time.date() <= now.date()):
             errors.append(
                 ValidationError('Date should be future', code='error3')
             )
+        
+        if (len(user_res) > 0):
+            errors.append(
+                ValidationError('You cannot reserve 2times a day', code='error4')
+            )
+            
         
         if (len(errors) > 0):
             raise ValidationError(errors)
