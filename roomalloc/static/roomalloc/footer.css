@@ -1,6 +1,7 @@
 /* Sticky footer styles
 -------------------------------------------------- */
 .footer {
+  margin-top:50px;
   line-height: 40px; /* Vertically center the text there */
   text-align: center;
   font-family: "Aclonica";
