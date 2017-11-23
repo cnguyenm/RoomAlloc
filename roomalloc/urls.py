@@ -25,8 +25,9 @@ urlpatterns = [
     url(r'^user/reserve/$'  , user.reserve  , name='user_reserve'),
    
     # room
-    url(r'^room/$'                      , room.explore, name='room_explore'),
-    url(r'^room/(?P<room_id>[0-9]+)/$'  , room.detail , name='room_detail'),
-    url(r'^room/(?P<room_id>[0-9]+)/res$'  , room.reserve , name='room_reserve'),
+    url(r'^room/$'                          , room.explore, name='room_explore'),
+    url(r'^room/(?P<room_id>[0-9]+)/$'      , room.detail , name='room_detail'),
+    url(r'^room/(?P<room_id>[0-9]+)/res$'   , room.reserve , name='room_reserve'),
+    url(r'^room/(?P<res_id>[0-9]+)/confirm$', room.confirm , name='room_confirm'),
 ]
 

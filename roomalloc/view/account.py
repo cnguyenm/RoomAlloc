@@ -31,7 +31,6 @@ def signup(request):
             # save to db
             user = form.save()
             user.refresh_from_db() # load the profile
-            user.profile.email = form.cleaned_data.get('email')
             
             # add to group
             normal_group = Group.objects.get_or_create(name='normal')
@@ -90,10 +89,11 @@ def update_profile(request):
     form2 = None
     profile_model = None
     
+    msg = None
     
     if (request.method == "POST"):
-        form1 = UserForm(request.POST)
-        form2 = ProfileForm(request.POST)
+        form1 = UserForm(request.POST, instance=request.user)
+        form2 = ProfileForm(request.POST, instance=request.user.profile)
         
         if form1.is_valid() and form2.is_valid():
             
@@ -101,21 +101,22 @@ def update_profile(request):
             user_model = form1.save()
             user_model.refresh_from_db() # load the profile
             
-            profile_model = form2.save()
+            profile_model = form2.save(commit=False)
             profile_model.user = user_model
             
             # save model
-            user_model.save()
             profile_model.save()
             
+            msg = "Updated successfully"
             
             
     else:
         form1 = UserForm(instance=request.user)
-        form2 = ProfileForm(instance=request.user)
+        form2 = ProfileForm(instance=request.user.profile)
     
     context = {
-        "nbar" : "update_profile",
+        "nbar"  : "update_profile",
+        "msg"   : msg,
         "form1" : form1,
         "form2" : form2
     }
