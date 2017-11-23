@@ -15,7 +15,9 @@
 <ul class="nav navbar-nav navbar-right">
     
     <li class="{% if nbar == 'update_profile' %}active{% endif %}">
-        <a href="{% url 'roomalloc:update_profile' %}">Hello, {{ request.user.username }}</a>
+        <a href="{% url 'roomalloc:update_profile' %}">
+            <span class="glyphicon glyphicon-cog"></span> Hello, {{ request.user.username }}
+        </a>
     </li>
     <li class="{% if nbar == 'login' %}active{% endif %}">
         <a href="{% url 'roomalloc:logout' %}"><span class="glyphicon glyphicon-log-out"></span>Log out</a>
