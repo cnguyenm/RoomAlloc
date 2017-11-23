@@ -4,9 +4,6 @@
 {% block nav %}
 
 <ul class="nav navbar-nav">
-    <li class="{% if nbar == 'user_home' %}active{% endif %}">
-        <a href="{% url 'roomalloc:index' %}">Home</a>
-    </li>
     <li class="{% if nbar == 'user_reserve' %}active{% endif %}">
         <a href="{% url 'roomalloc:user_reserve' %}">Reserve</a>
     </li>
@@ -17,8 +14,8 @@
     
 <ul class="nav navbar-nav navbar-right">
     
-    <li>
-        <a href="#">{{ request.user.username }}</a>
+    <li class="{% if nbar == 'update_profile' %}active{% endif %}">
+        <a href="{% url 'roomalloc:update_profile' %}">Hello, {{ request.user.username }}</a>
     </li>
     <li class="{% if nbar == 'login' %}active{% endif %}">
         <a href="{% url 'roomalloc:logout' %}"><span class="glyphicon glyphicon-log-out"></span>Log out</a>

@@ -15,9 +15,10 @@ urlpatterns = [
     url(r'^public/contact/$', public.contact, name='contact'),
     
     # account
-    url(r'^account/signup/$', account.signup , name='signup'),
-    url(r'^account/login/$' , account.log_in , name='login'),
-    url(r'^account/logout/$', account.log_out, name='logout'),
+    url(r'^account/signup/$', account.signup        , name='signup'),
+    url(r'^account/login/$' , account.log_in        , name='login'),
+    url(r'^account/logout/$', account.log_out       , name='logout'),
+    url(r'^account/profile/$', account.update_profile,name='update_profile'),
     
     # user
     url(r'^user/$'          , user.home     , name='user_home'),

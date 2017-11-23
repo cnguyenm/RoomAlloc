@@ -1,0 +1,19 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+.footer {
+  line-height: 40px; /* Vertically center the text there */
+  text-align: center;
+  font-family: "Aclonica";
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container-fl {
+      padding: 60px 50px;
+  }
+  .bg-gr {
+      background-color: #f6f6f6;
+  }

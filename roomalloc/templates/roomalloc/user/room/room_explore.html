@@ -1,19 +1,31 @@
 {% extends "../user_base.html" %}
 {% load static %}
 
+{% block head_ref %}
+
+<!-- Custom User CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'roomalloc/css/user.css' %}" />
+
+{% endblock %}
+
 {% block container %}
 
 <div class="container">
 <h2>Explore room options</h2>
 
+<form>
+    <input type="text" name="search" placeholder="Search..">
+    <input type="submit" value="Search"/>
+</form>
+
 <!-- Table -->
-<table class="table table-striped">
+<table class="table table-striped" id="table">
     <!-- Table Head-->
     <thead>
         <th>Location</th>
         <th>Name</th>
         <th>Capacity</th>
-        <th>Reserable</th>
+        <th>Reservable</th>
     </thead>
     <!-- /Table Head-->
     
@@ -29,9 +41,9 @@
             <td>{{ room.capacity }}</td>
             <td>
                 {% if room.is_reservable %}
-                    <img src="{% static 'roomalloc/icon/icon-yes.svg' %}" alt="Yes"/>
+                    <img id="reservable" src="{% static 'roomalloc/icon/icon-yes.svg' %}" alt="Yes"/>
                 {% else %}
-                    <img src="{% static 'roomalloc/icon/icon-no.svg' %}" alt="No"/>
+                    <img id="reservable" src="{% static 'roomalloc/icon/icon-no.svg' %}" alt="No"/>
                 {% endif %}
             </td>
         </tr>
