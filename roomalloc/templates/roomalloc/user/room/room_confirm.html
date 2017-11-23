@@ -3,12 +3,30 @@
 
 {% block container %}
 
-Reserve successfully
-
-<br>
-<a class="btn btn-info" href="{% url 'roomalloc:room_explore' %}">
-    <i class="fa fa-backward" aria-hidden="true"></i> 
-    Go back to room explore?
-</a>
+<div class="container">
+    <h2>
+        <span class="label label-success">Reserve successfully</span>
+    </h2>
+    
+    <div class="well">
+        <h2>Your reservation</h2>
+        
+        <h4>Room: {{ res.location }} - {{ res.room }}</h4> 
+        
+        <h4>Time start: {{ res.time_start }}</h4>  
+        
+        <h4>Time end: {{ res.time_end }}</h4> 
+        
+        <h4>Amount: {{ res.amount }}</h4>  
+        
+        <h4>Reason: {{ res.reason }}</h4> 
+    </div>
+    
+    <br>
+    <a class="btn btn-info" href="{% url 'roomalloc:room_explore' %}">
+        <i class="fa fa-backward" aria-hidden="true"></i> 
+        Go back to room explore?
+    </a>
+</div>
 
 {% endblock %}

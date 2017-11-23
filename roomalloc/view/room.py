@@ -15,7 +15,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
 from roomalloc.const import Template as T
-from roomalloc.models import Room, Location
+from roomalloc.models import Room, Location, Reservation
 from roomalloc.util import calendar
 from roomalloc.form.reservation import ReserveCreationForm
 
@@ -93,7 +93,10 @@ def reserve(request, room_id):
             reservation.room = room
             reservation.save()
             
-            return redirect( reverse("roomalloc:room_confirm") )
+            return redirect( 
+                reverse("roomalloc:room_confirm", 
+                kwargs={'res_id' : reservation.id}
+            ) )
     else:
         form = ReserveCreationForm(room=room, user=request.user)
     
@@ -109,5 +112,9 @@ def reserve(request, room_id):
     return render(request, T.ROOM_RESERVE, context)
     
 @login_required
-def confirm(request):
-    return render(request, T.ROOM_CONFIRM, {})
+def confirm(request, res_id):
+    
+    res = get_object_or_404(Reservation, pk=res_id)
+    
+    
+    return render(request, T.ROOM_CONFIRM, {"res":res})

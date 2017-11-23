@@ -89,11 +89,17 @@ class ReserveCreationForm(forms.ModelForm):
         )
     )
     
-    
+    # reason
+    reason = forms.CharField(
+        help_text = "Estimated Amount of people",
+        widget = forms.TextInput(
+            attrs = {'class' : 'form-control'}
+        )
+    )
     
     class Meta:
         model = Reservation
-        fields = ('time_start', 'time_end', 'amount')
+        fields = ('time_start', 'time_end', 'amount', 'reason')
         
     def clean_time_end(self):
         """
