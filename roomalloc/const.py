@@ -19,8 +19,9 @@ class Template():
     ACC_PROFILE     = "roomalloc/user/user_profile.html"
     
     USER_HOME       = "roomalloc/user/user_home.html"
-    USER_RESERVE    = "roomalloc/user/user_reserve.html"
-    USER_ROOM       = "roomalloc/user/user_room.html"
+    
+    RES_LIST        = "roomalloc/user/reserve/res_list.html"
+    RES_DETAIL      = "roomalloc/user/reserve/res_detail.html"
     
     ROOM_EXPLORE    = "roomalloc/user/room/room_explore.html"
     ROOM_DETAIL     = "roomalloc/user/room/room_detail.html"
