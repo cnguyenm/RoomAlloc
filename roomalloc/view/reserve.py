@@ -10,6 +10,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.utils.timezone import utc
 
 from roomalloc.const import Template as T
 from roomalloc.models import Reservation
@@ -42,7 +43,15 @@ def detail(request, res_id):
     """
     
     has_delete = None
+    allow_cancel = True
     res = get_object_or_404(Reservation, pk=res_id)
+    
+    # If reservation past time_start, not allow to cancel
+    time_start = res.time_start
+    now = datetime.datetime.utcnow().replace(tzinfo=utc)
+    
+    if (now > time_start):
+        allow_cancel = False
     
     if request.method == "POST":
         
@@ -50,11 +59,14 @@ def detail(request, res_id):
         # only record in db is lost
         res.delete() 
         has_delete = True
-        
+    
+    
+    
     context = {
-        "nbar"       : "res_display",
-        "has_delete" : has_delete,
-        "res"        : res
+        "nbar"         : "res_display",
+        "has_delete"   : has_delete,
+        "allow_cancel" : allow_cancel,
+        "res"          : res
     }
     
     return render(request, T.RES_DETAIL, context)

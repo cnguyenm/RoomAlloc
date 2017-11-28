@@ -37,13 +37,21 @@
         
         {% else %}
         <!-- Cancel button -->
-        <button class="btn btn-danger" type="submit">
+        
+        <button class="btn btn-danger" type="submit"
+        {% if allow_cancel is False %}
+            disabled
+        {% endif %} >
             <i class="fa fa-trash" aria-hidden="true"></i> 
             Cancel reservation 
         </button>
         <!-- /Cancel button -->
         {% endif %}
         
+        
+        {% if allow_cancel  is False %}
+        <small style="color: grey">Sorry, this is already in the past</small>
+        {% endif %}
     </form>
     <!-- Form -->
     
