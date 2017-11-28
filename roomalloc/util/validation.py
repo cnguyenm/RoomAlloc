@@ -37,14 +37,7 @@ def validate_time_round_up(user, room):
             user=user
         )
         
-        # get room reservations in date submit
-        # cur res should not overlapped with other reservations
-        room_res = Reservation.objects.filter(
-            time_start__date=time.date(),
-            room=room
-        )
-        
-        
+       
         errors  = []
         
         # check minute
