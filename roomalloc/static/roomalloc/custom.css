@@ -8,4 +8,27 @@
 /* Bootstrap navbar block content */
 body {
     padding-top:65px;
+    font-family: "Aclonica";
+    line-height: 30px;
+}
+
+h1{
+    text-align: center;
+    font-family: "Aclonica";
+}
+
+#logoDiv{
+    margin:0 auto;
+    text-align: center;
+}
+
+#table{
+    text-align: center;
+    font-size: 20px;
+    font-family: "Aclonica";
+    display: table;
+}
+
+#img1{
+    color: #ff2d00;
 }

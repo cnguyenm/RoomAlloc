@@ -1,0 +1,64 @@
+{% extends "./user_base.html" %}
+{% load static %}
+
+{% block head_ref %}
+
+<!-- Custom User CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'roomalloc/css/user.css' %}" />
+
+{% endblock %}
+
+{% block container %}
+<div class="container">
+    
+    <h2>Update profile</h2>
+    
+    {% if msg %}
+        <h2>
+            <span class="label label-success">{{ msg }}</span>
+        </h2>
+    {% endif %}
+    
+    <form method="POST">
+        {% csrf_token %}
+        
+        {% for field in form1 %}
+            <p>
+                {{ field.label_tag }}<br>
+                {{ field }}
+                
+                {% if field.help_text %}
+                <small style="color: grey">{{ field.help_text|safe }}</small>
+                {% endif %}
+                
+                {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+                {% endfor %}
+            </p>
+          
+        {% endfor %}
+        
+        {% for field in form2 %}
+            <p>
+                {{ field.label_tag }}<br>
+                {{ field }}
+                
+                {% if field.help_text %}
+                <small style="color: grey">{{ field.help_text|safe }}</small>
+                {% endif %}
+                
+                {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+                {% endfor %}
+            </p>
+          
+        {% endfor %}
+        
+        <button class="btn btn-info" type="submit">Update profile</button>
+    </form>
+
+</div>
+
+{% endblock %}
+
+

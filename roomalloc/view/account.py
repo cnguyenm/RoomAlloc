@@ -13,7 +13,9 @@ from django.urls import reverse
 
 from django.contrib.auth.models import Group
 
-from roomalloc.forms import UserForm, ProfileForm, SignUpForm, SignInForm
+from roomalloc.form.account import (
+    UserForm, ProfileForm, SignUpForm, SignInForm
+)
 
 from roomalloc.const import Template, GroupName
 from roomalloc.const import TplConst as T
@@ -29,7 +31,6 @@ def signup(request):
             # save to db
             user = form.save()
             user.refresh_from_db() # load the profile
-            user.profile.email = form.cleaned_data.get('email')
             
             # add to group
             normal_group, created = Group.objects.get_or_create(name='normal')
@@ -77,7 +78,51 @@ def log_in(request):
         {T.NBAR:"login", 'form':form, 'error_msg':error_msg}
     )
     
+
+def update_profile(request):
     
+    # user form
+    form1 = None
+    user_model = None
+    
+    # profile form
+    form2 = None
+    profile_model = None
+    
+    msg = None
+    
+    if (request.method == "POST"):
+        form1 = UserForm(request.POST, instance=request.user)
+        form2 = ProfileForm(request.POST, instance=request.user.profile)
+        
+        if form1.is_valid() and form2.is_valid():
+            
+            # get model
+            user_model = form1.save()
+            user_model.refresh_from_db() # load the profile
+            
+            profile_model = form2.save(commit=False)
+            profile_model.user = user_model
+            
+            # save model
+            profile_model.save()
+            
+            msg = "Updated successfully"
+            
+            
+    else:
+        form1 = UserForm(instance=request.user)
+        form2 = ProfileForm(instance=request.user.profile)
+    
+    context = {
+        "nbar"  : "update_profile",
+        "msg"   : msg,
+        "form1" : form1,
+        "form2" : form2
+    }
+    
+    return render(request, Template.ACC_PROFILE, context)
+
 def log_out(request):
     logout(request)
     return redirect(reverse("roomalloc:index"))

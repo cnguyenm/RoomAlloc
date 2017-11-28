@@ -13,6 +13,9 @@
     <!-- Bootstrap3 CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+    <!-- Font-awesome CSS -->
+    <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}">
+
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
@@ -22,6 +25,12 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'roomalloc/custom.css' %}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+     
+    <!-- Custom Footer -->
+     <link rel="stylesheet" type="text/css" href="{% static 'roomalloc/footer.css' %}" />
+     
+     <!-- Favicon -->
+     <link rel="icon" href="{% static 'roomalloc/icon/favicon.ico' %}" />
      
     <!-- Block to put in custom link -->
     {% block head_ref %}{% endblock %}
@@ -33,7 +42,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-        <a class="navbar-brand" href="#">RoomAlloc</a>
+        <a class="navbar-brand" href="#"><img style="height:150%" src="{% static 'roomalloc/img/logoWhite.png' %}" alt="Room Alloc"></a>
         </div>
         
         {% block nav %}
@@ -47,9 +56,49 @@
     {% endblock %}
 </div>
 
+
+
 <!-- Footer block -->
-<footer class="container-fluid">
-  <p>Footer Text</p>
+<footer class="footer">
+    <!-- Container (Contact Section) -->
+    <div id="contact" class="container-fl bg-gr">
+      <h2 class="text-center">CONTACT</h2>
+      <div class="row">
+        <div class="col-sm-5">
+          <p>Contact us and we'll get back to you within 24 hours.</p>
+          <p><span class="glyphicon glyphicon-map-marker"></span> West Lafayette, Indiana, US</p>
+          <p><span class="glyphicon glyphicon-phone"></span> +1 (765)494-4600</p>
+          <p><span class="glyphicon glyphicon-envelope"></span> itap@purdue.edu </p>
+        </div>
+        <div class="col-sm-7 slideanim">
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+            </div>
+            <div class="col-sm-6 form-group">
+              <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+            </div>
+          </div>
+          <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <button class="btn btn-default pull-right" type="submit">Send</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      
+        <span class="text-muted">
+            &copy There is no Copyright</br>
+<!--
+            Developed By:</br>
+            <p class="alignleft">Chau Nguyen Minh</p>
+            Arka Acharya
+            <p class="alignright">Richard Jung</p>
+-->
+        </span>
+      </div>
 </footer>
 
 </body>
