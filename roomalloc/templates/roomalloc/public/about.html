@@ -1,137 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
-    
-    /* Add a gray background color and some padding to the footer */
-    footer {
-      background-color: #f2f2f2;
-      padding: 25px;
-    }
-    
-  .carousel-inner img {
-      width: 100%; /* Set width to 100% */
-      margin: auto;
-      height:100px;
-  }
-  
 
-  /* Hide the carousel text when the screen is less than 600 pixels wide */
-  @media (max-width: 600px) {
-    .carousel-caption {
-      display: none; 
-    }
-  }
-  
-  #app {
-      background-color: #ADD8E6;
-  }
-  
-  #cs252 {
-      background-color: #FFF993;
-  }
-  </style>
-</head>
-<body>
+{% extends "./public_base.html" %}
+{% load static %}
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">Logo</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-    </div>
+{% block container %}
+
+<div class="container">
+  
+  <!-- Wrapper for slides -->
+  <div>
+    <img src="http://www.purdue.edu/purdue/images/audience/about/multipleImagesRow_09-12-2016/about-image2.jpg" class="img-responsive" style="width:100%" alt="Image">
+      <h3 align="center">RoomAllocator</h3>
+      <p align="center">West Lafayette, IN</p>
   </div>
-</nav>
-
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img src="http://www.purdue.edu/purdue/images/audience/about/multipleImagesRow_09-12-2016/about-image2.jpg" alt="Image">
-        <div class="carousel-caption">
-          <h3>RoomAllocator</h3>
-          <p>West Lafayette, IN</p>
-        </div>      
+    
+  <div class="container text-left">    
+    <h3>Our Team</h3><br>
+    <div class="row">
+      <div class="col-sm-4"> 
+        <img src="https://media.licdn.com/mpr/mpr/shrink_100_100/AAEAAQAAAAAAAAklAAAAJDUyYTNkZjE3LTZkMDUtNDA1Yy04NWM4LWU1NGE0YzQ1YzMwNA.jpg" class="img-responsive" style="width:100%" alt="Image">
+        <p>Richard Jung</p>  
+        <p>Although he is an american citizen, he originates from Korea (Hint: not North). His mixed geographical status impacted his academic career which is why after he gets his BSc in Comp Sci, he is going to Law School.</p>
       </div>
-
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-</div>
-  
-<div class="container text-left">    
-  <h3>Our Team</h3><br>
-  <div class="row">
-    <div class="col-sm-4">
-      <img src="https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-9/20729378_877630799057642_5636562703625647502_n.jpg?oh=65c64226a584f83c7d264669146f1f9c&oe=5AAA88DE" class="img-responsive" style="width:100%" alt="Image">
-      <p>Chau Nguyen Minh</p>
-      <p>2017 Riot Games, Inc. All rights reserved. Riot Games, League of Legends and PvP.net are trademarks, services marks, or registered trademarks of Riot Games</p>
-    </div>
-    <div class="col-sm-4"> 
-      <img src="https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-9/14705755_10207557870493114_2084791302326720460_n.jpg?oh=ec9dffc25a71a588431179e87c8ff73e&oe=5A6245BE" class="img-responsive" style="width:100%" alt="Image">
-      <p>Arka Acharya</p>
-      <p>Training is an activity done in order to increase a player's experience in one or more skills. Activities which are not done primarily for gaining experience are not usually considered to be training</p>
-    </div>
-    <div class="col-sm-4"> 
-      <img src="https://media.licdn.com/mpr/mpr/shrink_100_100/AAEAAQAAAAAAAAklAAAAJDUyYTNkZjE3LTZkMDUtNDA1Yy04NWM4LWU1NGE0YzQ1YzMwNA.jpg" class="img-responsive" style="width:100%" alt="Image">
-      <p>Richard Jung</p>  
-      <p>Richard is a senior studying Computer Science at Purdue. alskjdf;lk jv;lkjoih gwrtposhfopihg oqjslfamnf.a ,msnf.,mnv .,zmxvn.,n wlekrj flksj f;lkajf </p>
+      <div class="col-sm-4">
+        <img src="https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-9/20729378_877630799057642_5636562703625647502_n.jpg?oh=65c64226a584f83c7d264669146f1f9c&oe=5AAA88DE" class="img-responsive" style="width:100%" alt="Image">
+        <p>Chau Nguyen Minh</p>
+        <p>Originating from Vietnam, Chau has traveled many a miles to learn how to code. Pursueing Machine Learning Chau believes he will be able to help bring "Terminator" to reality.</p>
+      </div>
+      <div class="col-sm-4"> 
+        <img src="https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-9/14705755_10207557870493114_2084791302326720460_n.jpg?oh=ec9dffc25a71a588431179e87c8ff73e&oe=5A6245BE" class="img-responsive" style="width:100%" alt="Image">
+        <p>Arka Acharya</p>
+        <p>Focusing on Software Engineering, Arka hopes to leave his mark on this world one application at a time. He will be known for his ingenuity for milenia. Ha Ha Ha.</p>
+      </div>
     </div>
   </div>
-</div>
+  
+  <div class = "container text-center" id="app">
+      <h3>About Our Application</h3>
+      <p>Unlike anything extraordinary, our application makes the ordinary more accessible. RoomAllocator helps students lookup and book rooms from any location. It also allows teachers/administrators to add or remove rooms that will be available for booking.</p>
+  </div>
+  
+  <div class = "container text-center" id="cs252">
+      <h3>About CS252</h3>
+      <p>CS252 is a course that introduces an amateur coder to the available specializations and sub fields of study within the broad category we know to be Computer Science. Students are made to work on various projects which touch upon a concept from each track.</p>
+  </div>
 
-<div class = "container text-center" id="app">
-    <h3>About Our Application</h3>
-    <p>Angry Birds is a video game franchise created by Finnish company Rovio Entertainment. The series focuses on multi-colored birds who try to save their eggs from green-colored pigs, their enemies.</p>
-</div>
-
-<div class = "container text-center" id="cs252">
-    <h3>About CS252</h3>
-    <p>Doodle Jump is a platforming video game developed and published by Lima Sky, for Windows Phone, iOS, BlackBerry, Android, Java Mobile (J2ME), Nokia Symbian, and Xbox 360 for the Kinect platform.</p>
-</div>
-
-<footer class="container-fluid text-center">
-  <p>Footer text</p>
-</footer>
-
-</body>
-</html>
+{% endblock %}
