@@ -5,10 +5,16 @@
 
 <ul class="nav navbar-nav">
     <li class="{% if nbar == 'res_display' %}active{% endif %}">
-        <a href="{% url 'roomalloc:res_display' %}">Reserve</a>
+        <a href="{% url 'roomalloc:res_display' %}">
+            <i class="fa fa-calendar-o" aria-hidden="true">
+            </i> Reserve
+        </a>
     </li>
     <li class="{% if nbar == 'room_explore' %}active{% endif %}">
-        <a href="{% url 'roomalloc:room_explore' %}">Explore room</a>
+        <a href="{% url 'roomalloc:room_explore' %}">
+            <i class="fa fa-superpowers" aria-hidden="true">
+            </i> Explore room
+        </a>
     </li>
 </ul>
     
