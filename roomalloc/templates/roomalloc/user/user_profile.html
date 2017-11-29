@@ -2,15 +2,22 @@
 {% load static %}
 
 {% block head_ref %}
-
 <!-- Custom User CSS -->
 <link rel="stylesheet" type="text/css" href="{% static 'roomalloc/css/user.css' %}" />
-
 {% endblock %}
 
 {% block container %}
 <div class="container">
     
+    
+    <!-- Logo -->
+    <div class="col-lg-3 col-md-3" id="logo"> 
+        <img src="{% static 'roomalloc/img/logoWhite.png' %}" class="img-responsive" style="width:100%" alt="Image">
+    </div>
+    <!-- /Logo -->
+        
+    <!-- Update form -->
+    <div class="col-lg-5 col-md-5" id="wrapper">
     <h2>Update profile</h2>
     
     {% if msg %}
@@ -54,9 +61,11 @@
           
         {% endfor %}
         
-        <button class="btn btn-info" type="submit">Update profile</button>
+        <button class="btn btn-info" type="submit">
+            Update profile
+        </button>
     </form>
-
+    </div>
 </div>
 
 {% endblock %}
