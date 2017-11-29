@@ -1,43 +1,50 @@
 {% extends "./public_base.html" %}
+{% load static %}
 
 {% block head_ref %}
-
+<link rel="stylesheet" type="text/css" href="{% static 'roomalloc/css/signup.css' %}" />
 {% endblock %}
 
 {% block container %}
-
-<div id=logo> 
-    <img src="http://gibraltardesign.com/wp-content/uploads/2017/01/Purdue-Lawson-Computer-Science-1_1-1.jpg" class="img-responsive" style="width:100%" alt="Image">
-</div>
-
 <div class="container">
-    <div id=wrapper>
-<h2>Create an Account</h2>
-
-<form method="POST">
-    {% csrf_token %}
     
+    <div class="col-lg-1 col-md-1"></div>
+    <!-- Logo -->
+    <div class="col-lg-4 col-md-4" id="logo"> 
+        <img src="{% static 'roomalloc/img/logoImg.png' %}" class="img-responsive" style="width:100%" alt="Image">
+    </div>
+    <!-- /Logo -->
     
-    {% for field in form %}
-        <p>
-            {{ field.label_tag }}<br>
-            {{ field }}
+    <!-- Signup form -->
+    <div class="col-lg-4 col-md-4" id="wrapper">
+        <h2>Create an Account</h2>
+        
+        <form method="POST">
+            {% csrf_token %}
             
-            {% if field.help_text %}
-            <small style="color: grey">{{ field.help_text|safe }}</small>
-            {% endif %}
-            
-            {% for error in field.errors %}
-            <p style="color: red">{{ error }}</p>
+            {% for field in form %}
+                <p>
+                    {{ field.label_tag }}<br>
+                    {{ field }}
+                    <br>
+                    {% if field.help_text %}
+                    <small style="color: grey">{{ field.help_text|safe }}</small>
+                    {% endif %}
+                    <br>
+                    {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                </p>
+             
             {% endfor %}
-        </p>
-     
-    {% endfor %}
-</div>
-</div>    
+            <button id=btnSignup type="submit">Sign up</button>
+        </form>
+    </div>
+    <!-- /Signup form -->
+        
+            
+          
     
-        <button id=btnSignup type="submit">Sign up</button>
-      
-</form>
 
+</div>
 {% endblock %}
