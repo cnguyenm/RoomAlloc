@@ -1,0 +1,69 @@
+{% extends "../user_base.html" %}
+
+{% block container %}
+
+<div class="container">
+    <h2>
+        <span class="label label-info">Room schedule</span>
+    </h2>
+    
+    <!-- Form -->
+    <form method="POST" >
+        
+        {% csrf_token %}
+        
+        <!-- Schedule event -->
+        <div class="well">
+            <h2>Your reservation</h2>
+            
+            <h4>Room: {{ res.location }} - {{ res.room }}</h4> 
+            
+            <h4>Time start: {{ res.time_start }}</h4>  
+            
+            <h4>Time end: {{ res.time_end }}</h4> 
+            
+            <h4>Amount: {{ res.amount }}</h4>  
+            
+            <h4>Reason: {{ res.reason }}</h4> 
+        </div>
+        <!-- /Schedule event -->
+        
+        <br>
+        
+        {% if has_delete %}
+        <h3>
+        <span class="label label-success">Cancel successfully</span>
+        </h3>
+        
+        {% else %}
+        <!-- Cancel button -->
+        
+        <button class="btn btn-danger" type="submit"
+        {% if allow_cancel is False %}
+            disabled
+        {% endif %} >
+            <i class="fa fa-trash" aria-hidden="true"></i> 
+            Cancel reservation 
+        </button>
+        <!-- /Cancel button -->
+        {% endif %}
+        
+        
+        {% if allow_cancel  is False %}
+        <small style="color: grey">Sorry, this is already in the past</small>
+        {% endif %}
+    </form>
+    <!-- Form -->
+    
+    
+    <hr/>
+    
+    <!-- Go back button -->
+    <a class="btn btn-info" href="{% url 'roomalloc:res_display' %}">
+        <i class="fa fa-backward" aria-hidden="true"></i> 
+        Go back to your schedule?
+    </a>
+    <!-- /Go back button -->
+</div>
+
+{% endblock %}

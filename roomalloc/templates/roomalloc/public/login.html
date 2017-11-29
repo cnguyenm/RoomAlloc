@@ -1,76 +1,53 @@
 {% extends "./public_base.html" %}
+{% load static %}
 
 {% block head_ref %}
-<style type="text/css">
-    #loginContainer {
-        position: absolute;
-        top: 350px;
-        left: 850px;
-    }
-    #btnSubmit {
-        position: absolute;
-        top: 550px;
-        left: 900px;
-    }
-    #logoSmall {
-        width: 5%;
-        position: absolute;
-        top: 275px;
-        left: 900px;
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="{% static 'roomalloc/css/login.css' %}" />
 {% endblock %}
 
 {% block container %}
 
-<div id=logoSmall> 
-      <img src="https://pluralsight.imgix.net/paths/python-7be70baaac.png" class="img-responsive" style="width:100%" alt="Image">
-     
-    </div>
-
+<!--Container-->
 <div class="container">
-<div id=loginContainer>
-
-<h2>Log in </h2>
-
-{% if error_msg %}
-
-{{ error_msg }}
-
-{% endif %}
-
-<form method="post">
-    {% csrf_token %}
     
-    {% for field in form %}
-        <p>
-            {{ field.label_tag }}<br>
-            {{ field }}
+    <!-- Login Container-->
+    <div id="loginContainer">
+        
+       
+            <!-- Logo-->
+             <img id="logo" src="{% static 'roomalloc/icon/icon-python.png' %}" class="img-responsive" style="" alt="Image">
+            <!-- /Logo-->
             
-            {% if field.help_text %}
-            <small style="color: grey">{{ field.help_text|safe }}</small>
+            <!-- Login form -->
+            <h2 class="text-center">Log in </h2>
+            {% if error_msg %}
+                {{ error_msg }}
             {% endif %}
-        </p>
-      
-    {% endfor %}
-</div>
-</div>  
+        
+            <form method="post">
+                {% csrf_token %}
+                
+                {% for field in form %}
+                    <p>
+                        {{ field.label_tag }}<br>
+                        {{ field }}
+                        
+                        {% if field.help_text %}
+                        <small style="color: grey">{{ field.help_text|safe }}</small>
+                        {% endif %}
+                    </p>
+                  
+                {% endfor %}
+            
+                <button id=btnSubmit class="btn btn-info" type="submit">Login</button>
+            </form>
+            <!-- /Login form -->
+        </div>
     
-    
-    <button id=btnSubmit type="submit">Login</button>
+    <!-- /Login Container-->
 
- 
+</div> 
+<!--/Container-->
 
-</form>
-<<<<<<< HEAD
-
-<!--<h1>Username</h1>-->
-<!--<input type="text" name="user"/>-->
-
-<!--<h1>Password</h1>-->
-<!--<input type="text" name="pass"/>-->
-
-=======
->>>>>>> 3e480b6484cf1b6145b7b8f58013aabe5a817155
 
 {% endblock %}

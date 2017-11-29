@@ -1,0 +1,25 @@
+{% extends "../user_base.html" %}
+{% load static %}
+
+{% block head_ref %}
+<!-- Custom User CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'roomalloc/css/user.css' %}" />
+
+<link href="{% static 'vendor/calendar/fullcalendar.min.css' %}" rel="stylesheet" />
+<link href="{% static 'vendor/calendar/fullcalendar.print.min.css' %}" rel="stylesheet" media="print" />
+<script src="{% static 'vendor/calendar/lib/moment.min.js' %}"></script>
+<script src="{% static 'vendor/calendar/fullcalendar.min.js' %}"></script>
+
+{% include "./res_calendar.html" %}
+
+{% endblock %}
+
+
+{% block container %}
+
+<div class="container">
+    Reserve calendar
+    <div id="calendar"></div>
+
+</div>
+{% endblock %}

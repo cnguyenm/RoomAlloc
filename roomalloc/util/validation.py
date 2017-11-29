@@ -30,41 +30,41 @@ def validate_time_round_up(user, room):
         second = time.second
         
         # get user reservations in date submit
+        # a user should not reserve 2 rooms a day
         user_res = Reservation.objects.filter(
             # time.date is 0 am
-            # so time_start is after 0 am
-            time_start__gte=time.date(), 
+            time_start__date=time.date(), 
             user=user
         )
         
-        # get all reservations in date submit
-        
-        
-        
+       
         errors  = []
         
-        # check error
+        # check minute
         if (minute != 30 and minute != 0):
             errors.append(
                 ValidationError('Minute should be 30, or 0', code='error1')
             )
         
+        # check second
         if (second != 0):
             errors.append(
                 ValidationError('Second should be 0', code='error2')
             )
         
+        # check time future
         if (time.date() <= now.date()):
             errors.append(
                 ValidationError('Date should be future', code='error3')
             )
         
+        # check user res once
         if (len(user_res) > 0):
             errors.append(
                 ValidationError('You cannot reserve 2times a day', code='error4')
             )
             
-        
+        # total errors
         if (len(errors) > 0):
             raise ValidationError(errors)
             

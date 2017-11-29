@@ -91,7 +91,7 @@ class ReserveCreationForm(forms.ModelForm):
     
     # reason
     reason = forms.CharField(
-        help_text = "Estimated Amount of people",
+        help_text = "Short line of reason",
         widget = forms.TextInput(
             attrs = {'class' : 'form-control'}
         )
@@ -106,12 +106,20 @@ class ReserveCreationForm(forms.ModelForm):
         Auto-run 
         check: time_end > time_start
         check: time_end, time_start in 1 day
+        check: overlapping with others
         """
         
         # get time submit
         time_start  = self.cleaned_data.get("time_start")
         time_end    = self.cleaned_data.get("time_end")
-    
+        
+        # get room reservations in date submit
+        # cur res should not overlapped with other reservations
+        room_res = Reservation.objects.filter(
+            time_start__date=time_start.date(),
+            room=self.room
+        )
+        
         # error_lit
         errors = []
         
@@ -136,6 +144,18 @@ class ReserveCreationForm(forms.ModelForm):
                 code="error_too_long"
             ))
         
+        
+        # check overlapping, 2d collision :'(
+        for res in room_res:
+            if (time_start < res.time_end
+                and time_end > res.time_start):
+                    errors.append(forms.ValidationError(
+                        "Overlapping reservations",
+                        code="error_overlap"
+                    ))
+                    break
+        
+        # total errors
         if (len(errors) > 0):
             raise forms.ValidationError(errors)
         
