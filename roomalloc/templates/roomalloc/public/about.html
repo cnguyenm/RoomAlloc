@@ -1,52 +1,48 @@
 {% extends "./public_base.html" %}
+=======
 
 {% block container %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
-    
-    /* Add a gray background color and some padding to the footer */
-    footer {
-      background-color: #f2f2f2;
-      padding: 25px;
-    }
-    
-  .carousel-inner img {
-      width: 100%; /* Set width to 100% */
-      margin: auto;
-      height:100px;
-  }
-  
-
-  /* Hide the carousel text when the screen is less than 600 pixels wide */
-  @media (max-width: 600px) {
-    .carousel-caption {
-      display: none; 
-    }
-  }
-  
-  #app {
-      background-color: #ADD8E6;
-  }
-  
-  #cs252 {
-      background-color: #FFF993;
-  }
-  </style>
-</head>
+{% block container %}
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+</style>
 <body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>RoomAllocator</h3>
+  </div>
+  <div id="logoDiv">
+        <img src="/static/roomalloc/img/logo2.png" alt="Room Alloc">
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white"About our Product</a> 
+    <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Showcase</a> 
+    <!--<a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Services</a> -->
+    <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Our Team</a> 
+    <!--<a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Packages</a> -->
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Company Name</span>
+</header>
 
 <!--<nav class="navbar navbar-inverse">-->
 <!--  <div class="container-fluid">-->
@@ -89,52 +85,147 @@
         </div>      
       </div>
 
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-</div>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <div id="logoDiv">
+        <img src="/static/roomalloc/img/logo2.png" alt="Room Alloc">
+    </div>
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    
+    <h1 class="w3-xxxlarge w3-text-red"><b>Showcase.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
   
-<div class="container text-left">    
-  <h3>Our Team</h3><br>
-  <div class="row">
-    <div class="col-sm-4">
-      <img src="https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-9/20729378_877630799057642_5636562703625647502_n.jpg?oh=65c64226a584f83c7d264669146f1f9c&oe=5AAA88DE" class="img-responsive" style="width:100%" alt="Image">
-      <p>Chau Nguyen Minh</p>
-      <p>2017 Riot Games, Inc. All rights reserved. Riot Games, League of Legends and PvP.net are trademarks, services marks, or registered trademarks of Riot Games</p>
-    </div>
-    <div class="col-sm-4"> 
-      <img src="https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-9/14705755_10207557870493114_2084791302326720460_n.jpg?oh=ec9dffc25a71a588431179e87c8ff73e&oe=5A6245BE" class="img-responsive" style="width:100%" alt="Image">
-      <p>Arka Acharya</p>
-      <p>Training is an activity done in order to increase a player's experience in one or more skills. Activities which are not done primarily for gaining experience are not usually considered to be training</p>
-    </div>
-    <div class="col-sm-4"> 
-      <img src="https://media.licdn.com/mpr/mpr/shrink_100_100/AAEAAQAAAAAAAAklAAAAJDUyYTNkZjE3LTZkMDUtNDA1Yy04NWM4LWU1NGE0YzQ1YzMwNA.jpg" class="img-responsive" style="width:100%" alt="Image">
-      <p>Richard Jung</p>  
-      <p>Richard is a senior studying Computer Science at Purdue. alskjdf;lk jv;lkjoih gwrtposhfopihg oqjslfamnf.a ,msnf.,mnv .,zmxvn.,n wlekrj flksj f;lkajf </p>
+  <!-- Photo grid (modal) -->
+  <!--<div class="w3-row-padding">-->
+  <!--  <div class="w3-half">-->
+  <!--    <img src="/w3images/kitchenconcrete.jpg" style="width:100%" onclick="onClick(this)" alt="Concrete meets bricks">-->
+  <!--    <img src="/w3images/livingroom.jpg" style="width:100%" onclick="onClick(this)" alt="Light, white and tight scandinavian design">-->
+  <!--    <img src="/w3images/diningroom.jpg" style="width:100%" onclick="onClick(this)" alt="White walls with designer chairs">-->
+  <!--  </div>-->
+
+  <!--  <div class="w3-half">-->
+  <!--    <img src="/w3images/atrium.jpg" style="width:100%" onclick="onClick(this)" alt="Windows for the atrium">-->
+  <!--    <img src="/w3images/bedroom.jpg" style="width:100%" onclick="onClick(this)" alt="Bedroom and office in one space">-->
+  <!--    <img src="/w3images/livingroom2.jpg" style="width:100%" onclick="onClick(this)" alt="Scandinavian design">-->
+  <!--  </div>-->
+  <!--</div>-->
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
     </div>
   </div>
+
+  <!-- Services -->
+  <!--<div class="w3-container" id="services" style="margin-top:75px">-->
+  <!--  <h1 class="w3-xxxlarge w3-text-red"><b>Services</b></h1>-->
+  <!--  <hr style="width:50px;border:5px solid red" class="w3-round">-->
+  <!--  <p>We are a campus study space allocating service that simplifies the room reservation process for students!</p>-->
+ 
+  
+  <!-- Designers -->
+  <div class="w3-container" id="designers" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Our Team</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>We are undergraduate students from Purdue University. For our final lab of our CS252, we have been assigned to work as a team to build an application that
+    meets the requirements of creativity, potential of success, and robustness. With our application, we hope to have created a useful tool that students can use to 
+    facilitate the process of finding a place to study on campus. 
+    </p>
+    <p><b>Our designers are thoughtfully chosen</b>:</p>
+  </div>
+
+  <!-- The Team -->
+  <div class="w3-row-padding w3-grayscale">
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="/static/roomalloc/img/logo2.png" style="width:10%">
+        <div class="w3-container">
+          <h3>Chau Minh Nguyen</h3>
+          <p class="w3-opacity">Team Leader</p>
+          <p>Chau is a junior studying Computer Science at Purdue University. </p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="/static/roomalloc/img/logo2.png" style="width:10%">
+        <div class="w3-container">
+          <h3>Arka Acharya</h3>
+          <p class="w3-opacity">Software Developer</p>
+          <p>Arka is a senior studying Computer Science at Purdue University</p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="/static/roomalloc/img/logo2.png" style="width:10%">
+        <div class="w3-container">
+          <h3>Richard Jung</h3>
+          <p class="w3-opacity">Software Developer</p>
+          <p>Richard is a senior studying Computer Science at Purdue University</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Contact -->
+  <div class="w3-container" id="contact" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Contact.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Do you want us to style your home? Fill out the form and fill me in with the details :) We love meeting new people!</p>
+    <form action="/action_page.php" target="_blank">
+      <div class="w3-section">
+        <label>Name</label>
+        <input class="w3-input w3-border" type="text" name="Name" required>
+      </div>
+      <div class="w3-section">
+        <label>Email</label>
+        <input class="w3-input w3-border" type="text" name="Email" required>
+      </div>
+      <div class="w3-section">
+        <label>Message</label>
+        <input class="w3-input w3-border" type="text" name="Message" required>
+      </div>
+      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send Message</button>
+    </form>  
+  </div>
+
+<!-- End page content -->
 </div>
 
-<div class = "container text-center" id="app">
-    <h3>About Our Application</h3>
-    <p>Angry Birds is a video game franchise created by Finnish company Rovio Entertainment. The series focuses on multi-colored birds who try to save their eggs from green-colored pigs, their enemies.</p>
-</div>
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
 
-<div class = "container text-center" id="cs252">
-    <h3>About CS252</h3>
-    <p>Doodle Jump is a platforming video game developed and published by Lima Sky, for Windows Phone, iOS, BlackBerry, Android, Java Mobile (J2ME), Nokia Symbian, and Xbox 360 for the Kinect platform.</p>
-</div>
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
 
-<footer class="container-fluid text-center">
-  <p>Footer text</p>
-</footer>
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
 
 </body>
 </html>
