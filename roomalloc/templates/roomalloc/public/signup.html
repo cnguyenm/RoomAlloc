@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block head_ref %}
+
 <link rel="stylesheet" type="text/css" href="{% static 'roomalloc/css/signup.css' %}" />
 {% endblock %}
 
@@ -21,6 +22,7 @@
         
         <form method="POST">
             {% csrf_token %}
+
             
             {% for field in form %}
                 <p>
@@ -37,14 +39,11 @@
                 </p>
              
             {% endfor %}
+
             <button id=btnSignup type="submit">Sign up</button>
         </form>
     </div>
     <!-- /Signup form -->
         
-            
-          
-    
-
 </div>
 {% endblock %}
