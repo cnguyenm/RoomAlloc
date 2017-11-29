@@ -1,0 +1,17 @@
+#wrapper {
+    position: absolute;
+    top: 250px;
+    left: 900px;
+}    
+#btnSignup {
+    position: absolute;
+    top: 700px;
+    width: 10%;
+    left: 1050px;
+}
+#logo {
+    position: absolute;
+    top: 350px;
+    left: 350px;
+    width: 20%;
+}
