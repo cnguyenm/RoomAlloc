@@ -1,32 +1,53 @@
 {% extends "./public_base.html" %}
+{% load static %}
 
+{% block head_ref %}
+<link rel="stylesheet" type="text/css" href="{% static 'roomalloc/css/login.css' %}" />
+{% endblock %}
 
 {% block container %}
 
-<h2>Log in </h2>
-
-{% if error_msg %}
-
-{{ error_msg }}
-
-{% endif %}
-
-<form method="post">
-    {% csrf_token %}
+<!--Container-->
+<div class="container">
     
-    {% for field in form %}
-        <p>
-            {{ field.label_tag }}<br>
-            {{ field }}
+    <!-- Login Container-->
+    <div id="loginContainer">
+        
+       
+            <!-- Logo-->
+             <img id="logo" src="{% static 'roomalloc/icon/icon-python.png' %}" class="img-responsive" style="" alt="Image">
+            <!-- /Logo-->
             
-            {% if field.help_text %}
-            <small style="color: grey">{{ field.help_text|safe }}</small>
+            <!-- Login form -->
+            <h2 class="text-center">Log in </h2>
+            {% if error_msg %}
+                {{ error_msg }}
             {% endif %}
-        </p>
-      
-    {% endfor %}
+        
+            <form method="post">
+                {% csrf_token %}
+                
+                {% for field in form %}
+                    <p>
+                        {{ field.label_tag }}<br>
+                        {{ field }}
+                        
+                        {% if field.help_text %}
+                        <small style="color: grey">{{ field.help_text|safe }}</small>
+                        {% endif %}
+                    </p>
+                  
+                {% endfor %}
+            
+                <button id=btnSubmit class="btn btn-info" type="submit">Login</button>
+            </form>
+            <!-- /Login form -->
+        </div>
     
-    <button type="submit">Login</button>
-</form>
+    <!-- /Login Container-->
+
+</div> 
+<!--/Container-->
+
 
 {% endblock %}

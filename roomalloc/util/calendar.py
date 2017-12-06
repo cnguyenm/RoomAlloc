@@ -7,6 +7,8 @@ Some helper class, functions to deal with
 
 from django.utils import timezone
 
+
+
 class CalendarEvent():
     
     """
@@ -48,5 +50,34 @@ def get_room_events(room):
         
     return events
     
+
+
+def get_event_list(user):
+    """
+    get user events to render to webpage
+    @param user: <model> user model, or room model
+    @return events: list<CalendarEvent> associated with user or room
+    """
     
+    # get user schedule
+    reservations = user.reservation_set.all()
+    
+    # convert reservations into calendar_events
+    # ex: '2017-11-09T16:00:00'
+    events = []
+    event  = None
+    for r in reservations:
+        
+        # get localtime
+        start = timezone.localtime(r.time_start)
+        end   = timezone.localtime(r.time_end)
+        
+        event = CalendarEvent()
+        event.event_id = r.id
+        event.title = "Booked"
+        event.start = start.strftime("%Y-%m-%dT%H:%M:%S")
+        event.end   = end.strftime("%Y-%m-%dT%H:%M:%S")
+        events.append(event)
+        
+    return events
     

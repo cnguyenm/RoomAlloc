@@ -1,47 +1,135 @@
-
 {% extends "./public_base.html" %}
-{% load static %}
 
-{% block container %}
+{% block head_ref %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<style>
+  body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+  body {font-size:16px;}
+  .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+  .w3-half img:hover{opacity:1}
+</style>
+{% endblock %}
 
-<div class="container">
-  
-  <!-- Wrapper for slides -->
-  <div>
-    <img src="http://www.purdue.edu/purdue/images/audience/about/multipleImagesRow_09-12-2016/about-image2.jpg" class="img-responsive" style="width:100%" alt="Image">
-      <h3 align="center">RoomAllocator</h3>
-      <p align="center">West Lafayette, IN</p>
+
+{% block container  %}
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>RoomAllocator</h3>
   </div>
+  <div id="logoDiv">
+        <img src="/static/roomalloc/img/logo2.png" alt="Room Alloc">
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white"About our Product</a> 
+    <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Showcase</a> 
+    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Services</a> 
+    <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Programmers</a> 
+    <!--<a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Packages</a> -->
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Company Name</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <div id="logoDiv">
+        <img src="/static/roomalloc/img/logo2.png" alt="Room Alloc">
+    </div>
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
     
-  <div class="container text-left">    
-    <h3>Our Team</h3><br>
-    <div class="row">
-      <div class="col-sm-4"> 
-        <img src="https://media.licdn.com/mpr/mpr/shrink_100_100/AAEAAQAAAAAAAAklAAAAJDUyYTNkZjE3LTZkMDUtNDA1Yy04NWM4LWU1NGE0YzQ1YzMwNA.jpg" class="img-responsive" style="width:100%" alt="Image">
-        <p>Richard Jung</p>  
-        <p>Although he is an american citizen, he originates from Korea (Hint: not North). His mixed geographical status impacted his academic career which is why after he gets his BSc in Comp Sci, he is going to Law School.</p>
-      </div>
-      <div class="col-sm-4">
-        <img src="https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-9/20729378_877630799057642_5636562703625647502_n.jpg?oh=65c64226a584f83c7d264669146f1f9c&oe=5AAA88DE" class="img-responsive" style="width:100%" alt="Image">
-        <p>Chau Nguyen Minh</p>
-        <p>Originating from Vietnam, Chau has traveled many a miles to learn how to code. Pursueing Machine Learning Chau believes he will be able to help bring "Terminator" to reality.</p>
-      </div>
-      <div class="col-sm-4"> 
-        <img src="https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-9/14705755_10207557870493114_2084791302326720460_n.jpg?oh=ec9dffc25a71a588431179e87c8ff73e&oe=5A6245BE" class="img-responsive" style="width:100%" alt="Image">
-        <p>Arka Acharya</p>
-        <p>Focusing on Software Engineering, Arka hopes to leave his mark on this world one application at a time. He will be known for his ingenuity for milenia. Ha Ha Ha.</p>
-      </div>
+    <h1 class="w3-xxxlarge w3-text-red"><b>Showcase.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
+  
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
     </div>
   </div>
-  
-  <div class = "container text-center" id="app">
-      <h3>About Our Application</h3>
-      <p>Unlike anything extraordinary, our application makes the ordinary more accessible. RoomAllocator helps students lookup and book rooms from any location. It also allows teachers/administrators to add or remove rooms that will be available for booking.</p>
-  </div>
-  
-  <div class = "container text-center" id="cs252">
-      <h3>About CS252</h3>
-      <p>CS252 is a course that introduces an amateur coder to the available specializations and sub fields of study within the broad category we know to be Computer Science. Students are made to work on various projects which touch upon a concept from each track.</p>
+
+  <!-- Designers -->
+  <div class="w3-container" id="designers" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Our Team</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>We are undergraduate students from Purdue University. For our final lab of our CS252, we have been assigned to work as a team to build an application that
+    meets the requirements of creativity, potential of success, and robustness. With our application, we hope to have created a useful tool that students can use to 
+    facilitate the process of finding a place to study on campus. 
+    </p>
+    <p><b>Our designers are thoughtfully chosen</b>:</p>
   </div>
 
-{% endblock %}
+  <!-- The Team -->
+  <div class="w3-row-padding w3-grayscale">
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="/static/roomalloc/img/logo2.png" style="width:10%">
+        <div class="w3-container">
+          <h3>Chau Minh Nguyen</h3>
+          <p class="w3-opacity">Team Leader</p>
+          <p>Chau is a junior studying Computer Science at Purdue University. </p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="/static/roomalloc/img/logo2.png" style="width:10%">
+        <div class="w3-container">
+          <h3>Arka Acharya</h3>
+          <p class="w3-opacity">Software Developer</p>
+          <p>Arka is a senior studying Computer Science at Purdue University</p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="/static/roomalloc/img/logo2.png" style="width:10%">
+        <div class="w3-container">
+          <h3>Richard Jung</h3>
+          <p class="w3-opacity">Software Developer</p>
+          <p>Richard is a senior studying Computer Science at Purdue University</p>
+        </div>
+      </div>
+    </div>
+</div>
+
+  
+
+<!-- End page content -->
+</div>
+
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+{% endblock  %}

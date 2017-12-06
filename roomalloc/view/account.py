@@ -33,7 +33,7 @@ def signup(request):
             user.refresh_from_db() # load the profile
             
             # add to group
-            normal_group, create = Group.objects.get_or_create(name='normal')
+            normal_group, created = Group.objects.get_or_create(name='normal')
             user.groups.add(normal_group)
             
             # save

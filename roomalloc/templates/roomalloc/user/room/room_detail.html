@@ -60,7 +60,12 @@
     </table>
     
     <!-- Reserve button -->
+    <br/>
+    {% if room.is_reservable is False %}
+        <a class="button btn btn-info disabled" href="#">
+    {% else %}
     <a class="button btn btn-info" href="{% url 'roomalloc:room_reserve' room.id %}">
+    {% endif %}	
     	<i class="fa fa-paper-plane" aria-hidden="true"></i> Reserve room
 	</a>
     
