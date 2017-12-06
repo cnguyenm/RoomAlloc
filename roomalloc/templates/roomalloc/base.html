@@ -76,9 +76,10 @@
     <!-- Container (Contact Section) -->
     <div id="contact" class="container-fl bg-gr">
       <h2 class="text-center">CONTACT</h2>
-      <form id="email_form" method="post" action="{% url 'roomalloc:feedback' %}">
+      <form id="email_form" method="POST" action="{% url 'roomalloc:feedback' %}">
          {% csrf_token %} 
-        <div class="row">
+         
+         <div class="row">
           <div class="col-sm-5">
             <p>Contact us and we'll get back to you within 24 hours.</p>
             <p><span class="glyphicon glyphicon-map-marker"></span> West Lafayette, Indiana, US</p>
@@ -88,43 +89,23 @@
           <div class="col-sm-7 slideanim">
             <div class="row">
               <div class="col-sm-6 form-group">
-                <input class="form-control" id="subject" name="subject" placeholder="Subject" type="text" required>
+                {{ feedback_form.subject }}
               </div>
               <!--<div class="col-sm-6 form-group">-->
               <!--  <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>-->
               <!--</div>-->
             </div>
-            <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+              {{ feedback_form.comments }}
             <div class="row">
               <div class="col-sm-12 form-group">
-                <button class="btn btn-default pull-right" type="submit">Send</button>
+                <button class="btn btn-info pull-right" type="submit">  
+                  <i class="fa fa-comment" aria-hidden="true"></i> Send
+                </button>
               </div>
             </div>
           </div>
         </div>
       </form>
-      
-      <!-- <?php
-      
-        if(0 && isset($_POST['email']) && isset($_POST['name']) && isset($_POST['comments'])){
-          $admin_email = "acharyaa@purdue.edu";
-          echo "</br>".$admin_email;
-          
-          $email = $_POST['email'];
-          echo "</br>".$email;
-          
-          $subject = $_POST['subject'];
-          echo "</br>".$subject;
-          
-          $comment = $_POST['comment'];
-          echo "</br>".$comment;
-          
-          mail($admin_email, "$subject", $comment, "From: ".$email);
-        }
-        else{}
-      
-      ?> -->
-    
       
         <span class="text-muted">
             &copy There is no Copyright</br>

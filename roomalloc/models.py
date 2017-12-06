@@ -5,11 +5,11 @@ from django.dispatch import receiver
 
 # Create your models here.
 class Feedback(models.Model):
-    name = models.CharField(max_length=200)
+    subject = models.CharField(max_length=200)
     comments = models.TextField(max_length=2000)
     
     def __str__(self):
-        return self.name
+        return self.subject
 
 class Visitor(models.Model):
     name = models.CharField(max_length=200)

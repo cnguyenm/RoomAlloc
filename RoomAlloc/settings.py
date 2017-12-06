@@ -66,6 +66,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
+                # add roomalloc context processor
+                'roomalloc.view.context_processors.feedback_form_context_processor'
             ],
             'debug': DEBUG,
         },

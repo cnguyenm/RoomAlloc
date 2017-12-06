@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.db import models
 
 # Register your models here.
-from .models import Location, Room, Reservation, Profile
+from .models import Location, Room, Reservation, Profile, Feedback
 
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ['user', 'major', 'year', 'remain']
@@ -16,11 +16,10 @@ class ReservationAdmin(admin.ModelAdmin):
     list_display = ['__str__', 'time_start', 'time_end']
     
 
+admin.site.register(Feedback)
+
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Room, RoomAdmin)
 admin.site.register(Location)
-
-
-
 
 admin.site.register(Reservation, ReservationAdmin)
