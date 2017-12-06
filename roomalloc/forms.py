@@ -9,8 +9,16 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from roomalloc.models import Profile
+from roomalloc.models import Profile, Feedback
 from roomalloc.util import validation
+
+class FeedbackForm(forms.Form):
+    
+    #name = forms.CharField(max_length=200)
+    #comments = forms.CharField(max_length=2000)
+    
+    class Meta:
+        model = Feedback
 
 class SignUpForm(UserCreationForm):
     

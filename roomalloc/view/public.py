@@ -19,3 +19,6 @@ def about(request):
 def contact(request):
     return render(request, Template.PUBLIC_CONTACT, {T.NBAR:"contact"})
     
+def feedback(request):
+    return HttpResponse("Submit feedback")
+    

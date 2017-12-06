@@ -10,9 +10,10 @@ app_name = 'roomalloc'
 urlpatterns = [
 
     # public 
-    url(r'^$'               , public.index  , name='index'),
-    url(r'^public/about/$'  , public.about  , name='about'),
-    url(r'^public/contact/$', public.contact, name='contact'),
+    url(r'^$'                , public.index   , name='index'),
+    url(r'^public/about/$'   , public.about   , name='about'),
+    url(r'^public/contact/$' , public.contact , name='contact'),
+    url(r'^public/feedback/$', public.feedback, name='feedback'),
     
     # account
     url(r'^account/signup/$', account.signup        , name='signup'),
