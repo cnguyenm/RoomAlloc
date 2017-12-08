@@ -13,6 +13,7 @@ class Template():
     PUBLIC_INDEX    = "roomalloc/public/index.html"
     PUBLIC_ABOUT    = "roomalloc/public/about.html"
     PUBLIC_CONTACT  = "roomalloc/public/contact.html"
+    PUBLIC_FD_CONF  = "roomalloc/public/fd_confirm.html"
     
     ACC_LOGIN       = "roomalloc/public/login.html"
     ACC_SIGNUP      = "roomalloc/public/signup.html"

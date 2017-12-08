@@ -20,23 +20,44 @@
 
 <div class="container">
     
-    <!-- Room detail -->
     <h2>Room detail </h2>
-    
+
     <h3>{{ room.location }}, {{ room.name }}</h3>
     
-    <p>Room capacity: {{ room.capacity }}</p>
-    <p>Is Reservable:
-        {% if room.is_reservable %}
-            <img id="reservable" src="{% static 'roomalloc/icon/icon-yes.svg' %}" alt="Yes"/>
-        {% else %}
-            <img id="reservable" src="{% static 'roomalloc/icon/icon-no.svg' %}" alt="No"/>
-        {% endif %}
-    </p>
-    
-    {{ room.tech|safe }}
-    <!-- /Room detail -->
-    
+    <table class="table">
+        <tr class="row">
+            <td class="column">
+                <!-- Room detail -->
+                <p>Room capacity: {{ room.capacity }}</p>
+                
+                {{ room.tech|safe }}
+                <!-- /Room detail -->
+            </td>
+            
+            <td class="column">
+                <!-- Rules for reserving -->
+                <div>
+                    <p>Is Reservable:
+                    {% if room.is_reservable %}
+                        <img id="reservable" src="{% static 'roomalloc/icon/icon-yes.svg' %}" alt="Yes"/>
+                    {% else %}
+                        <img id="reservable" src="{% static 'roomalloc/icon/icon-no.svg' %}" alt="No"/>
+                    {% endif %}
+                    </p>
+                    
+                    Rules of reserving:
+                    <ul>
+                        <li>Cannot reserve 2 times/day</li>
+                        <li>No more than 3 hours</li>
+                        <li>Time should not collide with previous reservation</li>
+                        <li>If no one shows up after 15", user will receive penalty</li>
+                        <li>Damaging the provided equipment will result in a fee.</li>
+                    </ul>
+                </div>
+                <!-- Rules for reserving -->
+            </td>
+        </tr>
+    </table>
     
     <!-- Reserve button -->
     <br/>

@@ -41,12 +41,25 @@
 <!-- Nav block -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
+        <!-- Nav header -->
         <div class="navbar-header">
-        <a class="navbar-brand" href="#"><img style="height:150%" src="{% static 'roomalloc/img/logoWhite.png' %}" alt="Room Alloc"></a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span> 
+          </button>
+          <a class="navbar-brand" href="#">
+            <img style="height:150%" src="{% static 'roomalloc/img/logoWhite.png' %}" alt="Room Alloc">
+          </a>
         </div>
+        <!-- /Nav header -->
         
+        <!-- Nav links -->
+        <div class="collapse navbar-collapse" id="myNavbar">
         {% block nav %}
         {% endblock %}
+        </div>
+        <!-- /Nav header -->
     </div>
 </nav>
 
@@ -63,31 +76,36 @@
     <!-- Container (Contact Section) -->
     <div id="contact" class="container-fl bg-gr">
       <h2 class="text-center">CONTACT</h2>
-      <div class="row">
-        <div class="col-sm-5">
-          <p>Contact us and we'll get back to you within 24 hours.</p>
-          <p><span class="glyphicon glyphicon-map-marker"></span> West Lafayette, Indiana, US</p>
-          <p><span class="glyphicon glyphicon-phone"></span> +1 (765)494-4600</p>
-          <p><span class="glyphicon glyphicon-envelope"></span> itap@purdue.edu </p>
-        </div>
-        <div class="col-sm-7 slideanim">
-          <div class="row">
-            <div class="col-sm-6 form-group">
-              <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+      <form id="email_form" method="POST" action="{% url 'roomalloc:feedback' %}">
+         {% csrf_token %} 
+         
+         <div class="row">
+          <div class="col-sm-5">
+            <p>Contact us and we'll get back to you within 24 hours.</p>
+            <p><span class="glyphicon glyphicon-map-marker"></span> West Lafayette, Indiana, US</p>
+            <p><span class="glyphicon glyphicon-phone"></span> +1 (765)494-4600</p>
+            <p><span class="glyphicon glyphicon-envelope"></span> itap@purdue.edu </p>
+          </div>
+          <div class="col-sm-7 slideanim">
+            <div class="row">
+              <div class="col-sm-6 form-group">
+                {{ feedback_form.subject }}
+              </div>
+              <!--<div class="col-sm-6 form-group">-->
+              <!--  <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>-->
+              <!--</div>-->
             </div>
-            <div class="col-sm-6 form-group">
-              <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+              {{ feedback_form.comments }}
+            <div class="row">
+              <div class="col-sm-12 form-group">
+                <button class="btn btn-info pull-right" type="submit">  
+                  <i class="fa fa-comment" aria-hidden="true"></i> Send
+                </button>
+              </div>
             </div>
           </div>
-          <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
-          <div class="row">
-            <div class="col-sm-12 form-group">
-              <button class="btn btn-default pull-right" type="submit">Send</button>
-            </div>
-          </div>
         </div>
-      </div>
-    
+      </form>
       
         <span class="text-muted">
             &copy There is no Copyright</br>
