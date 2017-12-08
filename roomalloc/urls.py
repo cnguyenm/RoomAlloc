@@ -1,5 +1,6 @@
 
 from django.conf.urls import url 
+from roomalloc.view import room
 
 from roomalloc.view import ( 
     public, account, user, room, reserve)
@@ -31,5 +32,6 @@ urlpatterns = [
     url(r'^room/(?P<room_id>[0-9]+)/$'      , room.detail , name='room_detail'),
     url(r'^room/(?P<room_id>[0-9]+)/res$'   , room.reserve , name='room_reserve'),
     url(r'^room/(?P<res_id>[0-9]+)/confirm$', room.confirm , name='room_confirm'),
+    
 ]
 
