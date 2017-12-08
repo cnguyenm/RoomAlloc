@@ -13,6 +13,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 from roomalloc.const import Template as T
 from roomalloc.models import Room, Location, Reservation
@@ -27,8 +28,13 @@ def explore(request):
     """
     Display list of rooms
     """
+    
+     # get query string
+    search = request.GET.get('search','')
+    
     # get query_set
-    rooms = Room.objects.all()
+    rooms = Room.objects.filter( Q( name__icontains=search) | Q(location__name__icontains=search) | Q(tech__icontains=search) )
+    
     context = {
         "nbar" : "room_explore",
         "rooms": rooms

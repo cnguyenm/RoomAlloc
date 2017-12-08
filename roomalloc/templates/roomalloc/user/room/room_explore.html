@@ -14,7 +14,7 @@
 <h2>Explore room options</h2>
 
 <form>
-    <input type="text" name="search" placeholder="Search..">
+    <input type="text" id="roomSearch" name="search" placeholder="Search..">
     <input type="submit" value="Search"/>
 </form>
 
@@ -52,6 +52,26 @@
     </tbody>
     <!-- /Table Body -->
 </table>
+
+<script>
+        
+    var input, filter, tbl, td, i, entry, tr;
+    input = document.getElementById("roomSearch");
+    filter = input.value.toUpperCase();
+    tbl = document.getElementById("table");
+    tr = tbl.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+
+</script>
 
 <!-- /Table -->
 
