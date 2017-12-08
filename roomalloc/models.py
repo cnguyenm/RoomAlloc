@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 class Feedback(models.Model):
@@ -63,7 +64,7 @@ def update_user_profile(sender, instance, created, **kwargs):
     
     
 class Location(models.Model):
-    name = models.CharField(max_length=200, default="")
+    name = models.CharField(max_length=200, default="", unique=True)
     
     def __str__(self):
         return self.name
@@ -74,8 +75,11 @@ class Room(models.Model):
     location        = models.ForeignKey('Location', on_delete=models.CASCADE)
     
     # fields
-    name            = models.CharField(max_length=200, default="")
-    capacity        = models.IntegerField(help_text="Max capacity of room")
+    name            = models.CharField(max_length=200, default="", unique=True)
+    capacity        = models.IntegerField(
+        help_text="Max capacity of room",
+        validators  = [MinValueValidator(1)]
+    )
     tech            = models.TextField(help_text="Technology is room")
     is_reservable   = models.BooleanField()
     
